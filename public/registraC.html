@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleRegistraC.css">
+    <title>Registrazione Cliente</title>
+</head>
+<body>
+    <div id="titolo">
+        <h1>Registrazione Cliente</h1>
+    </div>
+
+    <form id="registrationForm">
+        <label for="nome">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <!-- Metodo di pagamento-->
+        <button type="submit">Registrati</button>
+    </form>
+
+    <button id="indietro">Indietro</button>
+    <script>
+        document.getElementById("indietro").addEventListener("click", function() {
+            window.location.href = "index.html";
+        });
+    </script>
+
+</html>

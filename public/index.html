@@ -21,10 +21,24 @@
         <div id="parteRegistrazione">
 
             <p>Registrati come</p>
-            <button>Artigiano</button>
-            <button>Cliente</button>
+            <button id="artigiano">Artigiano</button>
+            <button id="cliente">Cliente</button>
 
         </div>
 
+        <div>
+            <p>Sei già registrato?</p>
+            <a href="login.html" >Accedi</a>
+        </div>
 
+        <script>
+            document.getElementById("artigiano").addEventListener("click", function() {
+              window.location.href = "registraA.html";
+            });
+        </script>
+        <script>
+            document.getElementById("cliente").addEventListener("click", function() {
+              window.location.href = "registraC.html";
+            });
+        </script>
     </body>
