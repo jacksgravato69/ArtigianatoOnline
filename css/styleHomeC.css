@@ -1,0 +1,65 @@
+body{
+    background-color: #F4EBD0;
+}
+
+header nav {
+    background-color: #A8B5A2;
+    color: #3E4C59;
+    padding: 10px;
+
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+/*RICERCA*/
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #3E4C59;
+  }
+  
+  .search-input {
+    width: 0;
+    opacity: 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: width 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* Classe attiva per espandere */
+  .search-container.active .search-input {
+    width: 150px;
+    opacity: 1;
+  }
+  
+/*CARRELLO E UTENTE*/
+nav ul li.right {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #3E4C59;
+    font-size: 18px;
+}

@@ -1,7 +1,13 @@
+body{
+    background-color: #F4EBD0;
+}
+
+
 #titolo {
 
     text-align: center;
     margin-bottom: 100px;
+    color: #3E4C59;
 
 }
 
@@ -17,6 +23,16 @@
 
 div{
     text-align: center;
+}
+
+button{
+    background-color: #D97B54;
+    color: #3E4C59;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
   

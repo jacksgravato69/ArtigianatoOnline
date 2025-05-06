@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Artigianato Online</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
+        <link href="../css/styleHomeC.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <!-- DA VEDERE IL  RICERCA -> NON MI PIACE -->
+                    <li class="search-container">
+                        <button class="search-toggle">🔍</button>
+                        <input type="text" class="search-input" placeholder="Cerca...">
+                      </li>
+                      
+                    <li class="right">
+                        <a href="#carrello" id="carrello">Carrello</a>
+                        <a href="#utente" id="utente">Utente</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>  
+        
+
+    </body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const toggle = document.querySelector(".search-toggle");
+          const container = document.querySelector(".search-container");
+      
+          toggle.addEventListener("click", () => {
+            container.classList.toggle("active");
+          });
+        });
+      </script>
+      
+</html>

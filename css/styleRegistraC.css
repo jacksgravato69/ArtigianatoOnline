@@ -1,6 +1,25 @@
+body{
+    background-color:  #F4EBD0;
+}
 #titolo{
     text-align: center;
 }
 form{
     text-align: center;
+}
+header nav {
+    background-color: #A8B5A2;
+    color: #3E4C59;
+    padding: 5px;
+    text-align: center;
+}
+button{
+    text-align: center;
+    background-color: #D97B54;
+    color: #3E4C59;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
