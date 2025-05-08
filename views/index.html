@@ -22,18 +22,15 @@
 
             <p>Registrati come</p>
             <button onclick="window.location.href = '/registraArtigiano'" id="artigiano">Artigiano</button>
-            <button id="cliente">Cliente</button>
+            <button onclick="window.location.href = '/registraCliente'" id="cliente">Cliente</button>
 
         </div>
 
         <div>
             <p>Sei già registrato?</p>
-            <a href="login.html" >Accedi</a>
+            <a href = "/login">Accedi</a>
         </div>
+
+        <button onclick="window.location.href = '/homeCliente'">goToHomeC</button>
         
-        <script>
-            document.getElementById("cliente").addEventListener("click", function() {
-              window.location.href = "registraC.html";
-            });
-        </script>
     </body>
