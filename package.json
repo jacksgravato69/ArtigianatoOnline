@@ -1,0 +1,25 @@
+{
+  "name": "artigianatoonline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jacksgravato69@github.com/jacksgravato69/ArtigianatoOnline.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacksgravato69/ArtigianatoOnline/issues"
+  },
+  "homepage": "https://github.com/jacksgravato69/ArtigianatoOnline#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.15.6"
+  }
+}

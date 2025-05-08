@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
 
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
 
     </head>
 
@@ -21,7 +21,7 @@
         <div id="parteRegistrazione">
 
             <p>Registrati come</p>
-            <button id="artigiano">Artigiano</button>
+            <button onclick="window.location.href = '/registraArtigiano'" id="artigiano">Artigiano</button>
             <button id="cliente">Cliente</button>
 
         </div>
@@ -30,12 +30,7 @@
             <p>Sei già registrato?</p>
             <a href="login.html" >Accedi</a>
         </div>
-
-        <script>
-            document.getElementById("artigiano").addEventListener("click", function() {
-              window.location.href = "registraA.html";
-            });
-        </script>
+        
         <script>
             document.getElementById("cliente").addEventListener("click", function() {
               window.location.href = "registraC.html";
