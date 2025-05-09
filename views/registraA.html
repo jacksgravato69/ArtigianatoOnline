@@ -3,7 +3,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styleRegistraA.css">
+
+    <script src="./js/registrazioneUtente.js"></script>
+
     <title>Registrazione Artigiano</title>
+
 </head>
 <body>
     <header>
@@ -24,7 +28,7 @@
         <input type="password" id="password" name="password" required><br><br>
 
        
-        <button type="submit">Registrati</button><br><br>
+        <button onclick="registraUtente('artigiano')" type="submit">Registrati</button><br><br>
         <button onclick="window.location.href = '/index'" id="indietro">Indietro</button>
     </form>
     

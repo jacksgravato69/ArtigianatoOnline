@@ -13,13 +13,14 @@ app.use(express.json());
 
 
 //Ricevuta una richiesta di GET, restituisco il file index.html (la richiesta GET viene fatta quando viene aperta la pagina)
+//Quindi quando mi collego al server da web (ossia ad http://localhost:3000) mi restituisce il file index.html
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
 
 //QUERY DI PROVA
-pool.query('SELECT * FROM \"Clienti\"', (err, result) => {
+pool.query('SELECT * FROM \"ElencoUtenti\"', (err, result) => {
 
     if (err) {
 

@@ -5,11 +5,11 @@ const pool = require('../../db/db');
 
 router.post('/', async(req, res) => {
 
-    const { username, email, password } = req.body;
+    const { username, email, password, tipoUtente } = req.body;
 
     const hashedPassword = await hashPassword(password);
 
-    await pool.query('INSERT INTO \"Clienti\" VALUES ($1, $2, $3)', [email, username, hashedPassword])
+    await pool.query('INSERT INTO \"ElencoUtenti\" VALUES ($1, $2, $3, $4)', [email, username, hashedPassword, tipoUtente])
         .then(result => {
 
             console.log("Registrazione avvenuta con successo");
