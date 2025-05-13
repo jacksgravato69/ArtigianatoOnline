@@ -10,13 +10,14 @@ function registraUtente(tipoCliente) {
     //Prevenire il comportamento predefinito del form per evitare che escano i dati di login nella search bar
     event.preventDefault();
 
-    //Definisco in delle variabili i dati inserirti dall'utente
-    username = document.getElementById("username").value
-    email = document.getElementById("email").value
-    password = document.getElementById("password").value
     let data = {};
-
+    
     if(tipoCliente == "cliente") {
+      
+      //Definisco in delle variabili i dati inserirti dall'utente
+      username = document.getElementById("username").value
+      email = document.getElementById("email").value
+      password = document.getElementById("password").value
 
         //Inserisco i dati in un oggetto
         data = {
@@ -29,6 +30,11 @@ function registraUtente(tipoCliente) {
         }
 
     } else if(tipoCliente == "artigiano") {
+
+      //Definisco in delle variabili i dati inserirti dall'utente
+      username = document.getElementById("nomeAzienda").value
+      email = document.getElementById("email").value
+      password = document.getElementById("password").value
 
         //Inserisco i dati in un oggetto
         data = {
