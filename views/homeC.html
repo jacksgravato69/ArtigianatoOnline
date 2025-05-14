@@ -13,19 +13,71 @@
         <header>
             <nav>
                 <ul>
-                    <!-- DA VEDERE IL  RICERCA -> NON MI PIACE -->
                     <li class="search-container">
                         <button class="search-toggle">🔍</button>
                         <input type="text" class="search-input" placeholder="Cerca...">
-                      </li>
+                    </li>
                       
                     <li class="right">
-                        <a href="#carrello" id="carrello">Carrello</a>
-                        <a href="#utente" id="utente">Utente</a>
+                        <a href="#carrello" id="carrello">
+                            <img src="/images/carrello.jpeg" alt="Carrello" width="30" height="30">
+                        </a>
+                        <a href="#utente" id="utente">
+                            <img src="/images/utente.jpg" alt="Utente" width="30" height="30">
+                        </a>
                     </li>
                 </ul>
             </nav>
         </header>  
+
+        
+        <section id="catalogo" class="grid-section"> <!-- Foto e data-desciption da sistemare -->
+        <h2>Catalogo</h2>
+        <!-- Prima riga di card -->
+        <div class="row">
+            <div class="card" >
+                <img src="/images/Prodotto.jpg" alt="Prodotto 1">
+                <h3>Prodotto 1</h3>
+                <p>Descrizione Prodotto </p>
+                <button class="add-to-cart">Aggiungi al carrello</button>
+            </div>
+    
+            <div class="card" >
+                <img src="/images/Prodotto.jpg" alt="Prodotto 2">
+                <h3>Prodotto 2</h3>
+                <p>Descrizione Prodotto </p>
+                <button class="add-to-cart">Aggiungi al carrello</button>
+            </div>
+            <div class="card" >
+                <img src="/images/Prodotto.jpg" alt="Prodotto 3">
+                <h3>Prodotto 3</h3>
+                <p>Descrizione Prodotto </p>
+                <button class="add-to-cart">Aggiungi al carrello</button>
+            </div>
+        </div>
+            <!-- Seconda riga di card -->
+            <div class="row">
+                <div class="card" >
+                    <img src="/images/Prodotto.jpg" alt="Prodotto 4">
+                    <h3>Prodotto 4</h3>
+                    <p>Descrizione Prodotto </p>
+                    <button class="add-to-cart">Aggiungi al carrello</button>
+                </div>
+                <div class="card" >
+                    <img src="/images/Prodotto.jpg" alt="Prodotto 5">
+                    <h3>Prodotto 5</h3>
+                    <p>Descrizione Prodotto </p>
+                    <button class="add-to-cart">Aggiungi al carrello</button>
+                </div>
+                <div class="card" >
+                    <img src="/images/Prodotto.jpg" alt="Prodotto 6">
+                    <h3>Prodotto 6</h3>
+                    <p>Descrizione Prodotto </p>
+                    <button class="add-to-cart">Aggiungi al carrello</button>
+                </div>
+            </div>    
+
+            <!-- Aggiungi altri prodotti qui -->
         
 
     </body>
@@ -39,6 +91,8 @@
             container.classList.toggle("active");
           });
         });
-      </script>
+    </script>
+
+   
       
 </html>

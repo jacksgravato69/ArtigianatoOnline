@@ -77,3 +77,6 @@ app.get('/index', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 
 });
+
+//Per immagini
+app.use(express.static('public'));
