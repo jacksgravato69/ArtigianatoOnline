@@ -5,25 +5,36 @@ const pool = require('../../db/db');
 
 router.post('/', async(req, res) => {
 
-    const { username, email, password, tipoUtente } = req.body;
+    const { username, email, password, tipoUtente, nome, cognome, indirizzo, numeroCarta, dataScadenza} = req.body;
 
-    const hashedPassword = await hashPassword(password);
+    //Controllo se il numero della carta di credito è valido
+    if (!validaCartaConLuhn(numeroCarta)) {
+        return res.status(400).json({ error: "Numero della carta di credito non valido" });
+    }
 
-    await pool.query('INSERT INTO \"ElencoUtenti\" VALUES ($1, $2, $3, $4)', [email, username, hashedPassword, tipoUtente])
-        .then(result => {
+    //Inserisco tutto in un try-catch essendo che devo effettuare 2 query, in modo da gestire eventuali errori
+    try {
 
-            console.log("Registrazione avvenuta con successo");
-            res.status(200).json({ message: "Registrazione avvenuta con successo" });
+        //Hasho sia la passoword che il numero della carta
+        const hashedPassword = await hashPassword(password);
+        const hashedNumeroCarta = await hashPassword(numeroCarta);
 
-        })
-        .catch(err => {
+        //Query per inserimento dei dati dell'utente
+        await pool.query('INSERT INTO \"ElencoUtenti\" VALUES ($1, $2, $3, $4)',[email, username, hashedPassword, tipoUtente]);
 
-            console.error("Errore durante la registrazione:", err);
-            res.status(500).json({ error: "Errore durante la registrazione" });
+        //Query per inserimento dei dati di fatturazione dell'utente
+        await pool.query('INSERT INTO \"DatiCarte\" VALUES ($1, $2, $3, $4, $5, $6)',[email, nome, cognome, indirizzo, hashedNumeroCarta, dataScadenza]);
 
-        });
+        res.status(200).json({ message: "Registrazione avvenuta con successo" });
 
-}) ;
+    } catch (err) {
+
+        console.error("Errore durante la registrazione:", err);
+        res.status(500).json({ error: "Errore durante la registrazione" });
+
+    }
+
+});
 
 async function hashPassword(password) {
 
@@ -45,6 +56,37 @@ async function hashPassword(password) {
 
     }
 
+
+}
+
+//Funzione per validare il numero della carta di credito con l'algoritmo di Luhn
+function validaCartaConLuhn(numeroCarta) {
+
+    //Rimuove spazi o trattini
+    const numeroPulito = numeroCarta.replace(/\D/g, '');
+
+    let somma = 0;
+    let doppio = false;
+
+    //Scorri da destra verso sinistra
+    for (let i = numeroPulito.length - 1; i >= 0; i--) {
+
+        let cifra = parseInt(numeroPulito[i], 10);
+
+        if (doppio) {
+
+            cifra *= 2;
+            if (cifra > 9) cifra -= 9;
+
+        }
+
+        somma += cifra;
+        doppio = !doppio;
+
+    }
+
+    //È valida se la somma è multiplo di 10
+    return somma % 10 === 0;
 
 }
 

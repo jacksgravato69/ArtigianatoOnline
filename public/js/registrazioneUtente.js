@@ -7,7 +7,7 @@ let password
 //TODO: aggiungere i controlli per verificare i dati inseriti dall'utente
 function registraUtente(tipoCliente) {
 
-    //Prevenire il comportamento predefinito del form per evitare che escano i dati di login nella search bar
+    //Prevenire il comportamento predefinito del form per evitare che escano i dati di login nella search bar e non refreshare la pagina
     event.preventDefault();
 
     let data = {};
@@ -19,13 +19,26 @@ function registraUtente(tipoCliente) {
       email = document.getElementById("email").value
       password = document.getElementById("password").value
 
+      //Defininisco in delle variabili le informazioni per il metodo di pagamento
+      nome = document.getElementById("nome").value
+      cognome = document.getElementById("cognome").value
+      indirizzo = document.getElementById("indirizzo").value
+      numeroCarta = document.getElementById("numeroCarta").value
+      dataScadenza = document.getElementById("scadenza").value
+
         //Inserisco i dati in un oggetto
         data = {
     
             username: username,
             email: email,
             password: password,
-            tipoUtente: "cliente"
+            tipoUtente: "cliente",
+
+            nome: nome,
+            cognome: cognome,
+            indirizzo: indirizzo,
+            numeroCarta: numeroCarta,
+            dataScadenza: dataScadenza
     
         }
 
@@ -42,7 +55,13 @@ function registraUtente(tipoCliente) {
             username: username,
             email: email,
             password: password,
-            tipoUtente: "artigiano"
+            tipoUtente: "artigiano",
+
+            nome: nome,
+            cognome: cognome,
+            indirizzo: indirizzo,
+            numeroCarta: numeroCarta,
+            dataScadenza: dataScadenza
     
         }
 
