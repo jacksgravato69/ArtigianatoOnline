@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "npx wait-port db:5432 && node server.js",
     "setup": "npm install && npm start"
   },
   "repository": {
@@ -21,8 +21,13 @@
   "homepage": "https://github.com/jacksgravato69/ArtigianatoOnline#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "pg": "^8.15.6"
+    "pg": "^8.15.6",
+    "wait-port": "^1.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

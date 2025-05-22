@@ -14,7 +14,7 @@ function loginUtente() {
     }
 
     //Inoltro la richiesta di login al server passando i dati in formato JSON, e salvo la risposta in una variabile
-    const response = fetch('/api/login', {
+    const response = fetch('http://localhost:3000/api/login', {
 
         //Indico il metodo di richiesta HTTP
         method: 'POST',
@@ -33,7 +33,7 @@ function loginUtente() {
         if (data.success) {
 
             //Reindirizzo alla pagina di home del cliente
-            window.location.replace('/homeCliente');
+            window.location.replace('../../views/homeC.html');
 
             /*
             //TODO: gestire il reindirizzamento in base al tipo di utente

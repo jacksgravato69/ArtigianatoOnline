@@ -69,7 +69,7 @@ function registraUtente(tipoCliente) {
 
 
     //Inoltro la richiesta di registrazione al server per la registrazione passando i dati in formato JSON, e salvo la risposta in una variabile
-    const response = fetch('/api/registrazione', {
+    const response = fetch('http://localhost:3000/api/registrazione', {
 
         //Indico il metodo di richiesta HTTP
         method: 'POST',
@@ -89,13 +89,13 @@ function registraUtente(tipoCliente) {
           if(tipoCliente == "cliente") {
 
             //Reindirizzo alla pagina di home del cliente
-            window.location.replace('/homeCliente');
+            window.location.replace('../../views/homeC.html');
 
           } else if(tipoCliente == "artigiano") {
 
             //Reindirizzo alla pagina di home dell'artigiano
             //TODO: CREARE PAGINA ARTIGIANO
-            window.location.replace('/homeCliente');
+            window.location.replace('../../views/homeC.html');
 
           }
 

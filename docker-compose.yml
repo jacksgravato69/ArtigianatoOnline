@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app   #Monta i file locali nel container
+      - /app/node_modules
+    depends_on:
+      - db
+    environment:
+      DB_USER: jackchiara
+      DB_PASSWORD: admin
+      DB_NAME: artigianatoonline
+      DB_HOST: db
+      DB_PORT: 5432
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app  #Monta i file locali nel container
+
+  db:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: jackchiara
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: artigianatoonline
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-docker:/var/lib/postgresql/data

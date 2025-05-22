@@ -2,22 +2,17 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const pool = require('./db/db');
+const cors = require('cors');
+app.use(cors());
 
 //Importo le rotte API
 const registrazioneAPI = require('./routes/api/registrazione.js');
 const loginAPI = require('./routes/api/login.js')
 
 //Dico di leggere tutti i file statici dalla cartella public; tutti i file che si trovano in questa cartella sono accessibili come se si trovssero nella root
-app.use(express.static(__dirname + "/public"));
+//app.use(express.static(__dirname + "/public"));
  //Per richieste JSON
 app.use(express.json());
-
-
-//Ricevuta una richiesta di GET, restituisco il file index.html (la richiesta GET viene fatta quando viene aperta la pagina)
-//Quindi quando mi collego al server da web (ossia ad http://localhost:3000) mi restituisce il file index.html
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
-});
 
 
 //QUERY DI PROVA
@@ -36,7 +31,7 @@ pool.query('SELECT * FROM \"DatiCarte\"', (err, result) => {
 });
 
 //Quando viene creato il server, stampo un messaggio del link di dove si trova
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
@@ -45,42 +40,6 @@ app.use('/api/registrazione', registrazioneAPI);
 
 //Indica che tutte le richieste che iniziano con /api/login verranno gestite da quello che c’è nel file login.js
 app.use('/api/login', loginAPI);
-
-
-//Rotta per la pagina "registraA"
-app.get('/registraArtigiano', (req, res) => {
-
-  res.sendFile(__dirname + '/views/registraA.html');
-
-});
-
-//Rotta per la pagina "registraC"
-app.get('/registraCliente', (req, res) => {
-
-  res.sendFile(__dirname + '/views/registraC.html');
-
-});
-
-//Rotta per la pagina "homeC"
-app.get('/homeCliente', (req, res) => {
-
-  res.sendFile(__dirname + '/views/homeC.html');
-
-});
-
-//Rotta per la pagina "login"
-app.get('/login', (req, res) => {
-
-  res.sendFile(__dirname + '/views/login.html');
-
-});
-
-//Rotta per la pagina "index"
-app.get('/index', (req, res) => {
-
-  res.sendFile(__dirname + '/views/index.html');
-
-});
 
 //Per immagini
 app.use(express.static('public'));
