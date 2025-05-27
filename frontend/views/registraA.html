@@ -27,6 +27,20 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
 
+        <label for="domandaSicurezza">Domanda di Sicurezza:</label> <br><br>
+
+        <!-- Menu a tendina per domanda di sicurezza -->
+        <select name="domanda" id="domandaSicurezza" required>
+
+            <option value="nomeMadre">Qual è il nome di tua madre?</option>
+            <option value="nomeAnimale">Come si chiamava il tuo primo animale domestico?</option>
+            <option value="cittàNascita">In che città sei nato?</option>
+            <option value="colorePreferito">Qual è il tuo colore preferito?</option>
+
+        </select> <br><br>
+        <input type="text" id="rispostaSicurezza" name="domandaSicurezza" required><br><br>
+
+
        
         <button onclick="registraUtente('artigiano')" type="submit">Registrati</button><br><br>
         <button onclick="window.location.href = '/index'" id="indietro">Indietro</button>

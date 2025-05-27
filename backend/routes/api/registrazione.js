@@ -5,7 +5,7 @@ const pool = require('../../db/db');
 
 router.post('/', async(req, res) => {
 
-    const { username, email, password, tipoUtente, nome, cognome, indirizzo, numeroCarta, dataScadenza} = req.body;
+    const { username, email, password, tipoUtente, nome, cognome, indirizzo, numeroCarta, dataScadenza, domandaSicurezza, rispostaSicurezza} = req.body;
 
     //Controllo se il numero della carta di credito è valido
     if (!validaCartaConLuhn(numeroCarta)) {
@@ -15,12 +15,13 @@ router.post('/', async(req, res) => {
     //Inserisco tutto in un try-catch essendo che devo effettuare 2 query, in modo da gestire eventuali errori
     try {
 
-        //Hasho sia la passoword che il numero della carta
+        //Hasho, la passoword, il numero della carta e la risposta di sicurezza
         const hashedPassword = await hashPassword(password);
         const hashedNumeroCarta = await hashPassword(numeroCarta);
+        const hashedRispostaSicurezza = await hashPassword(rispostaSicurezza);
 
         //Query per inserimento dei dati dell'utente
-        await pool.query('INSERT INTO \"ElencoUtenti\" VALUES ($1, $2, $3, $4)',[email, username, hashedPassword, tipoUtente]);
+        await pool.query('INSERT INTO \"ElencoUtenti\" VALUES ($1, $2, $3, $4, $5, $6)',[email, username, hashedPassword, tipoUtente, domandaSicurezza, hashedRispostaSicurezza]);
 
         //Query per inserimento dei dati di fatturazione dell'utente
         await pool.query('INSERT INTO \"DatiCarte\" VALUES ($1, $2, $3, $4, $5, $6)',[email, nome, cognome, indirizzo, hashedNumeroCarta, dataScadenza]);

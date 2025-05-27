@@ -2,6 +2,8 @@
 let username
 let email
 let password
+let domandaSicurezza
+let rispostaSicurezza
 
 //Funzione che viene chiamata quando il Cliente preme il tasto per confermare la registrazione
 //TODO: aggiungere i controlli per verificare i dati inseriti dall'utente
@@ -14,10 +16,13 @@ function registraUtente(tipoCliente) {
     
     if(tipoCliente == "cliente") {
       
-      //Definisco in delle variabili i dati inserirti dall'utente
+      //Definisco in delle variabili i dati inseriti dall'utente
       username = document.getElementById("username").value
       email = document.getElementById("email").value
       password = document.getElementById("password").value
+      //Per ottenere il testo della donmanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
+      domandaSicurezza = document.getElementById("domandaSicurezza").options[document.getElementById("domandaSicurezza").selectedIndex].text
+      rispostaSicurezza = document.getElementById("rispostaSicurezza").value    
 
       //Defininisco in delle variabili le informazioni per il metodo di pagamento
       nome = document.getElementById("nome").value
@@ -25,6 +30,11 @@ function registraUtente(tipoCliente) {
       indirizzo = document.getElementById("indirizzo").value
       numeroCarta = document.getElementById("numeroCarta").value
       dataScadenza = document.getElementById("scadenza").value
+
+      //Definisco in delle variabili la domanda e la risposta di sicurezza per l'eventuale recupero della password
+      //Per ottenere il testo della donmanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
+      domandaSicurezza = document.getElementById("domandaSicurezza").options[document.getElementById("domandaSicurezza").selectedIndex].text
+      rispostaSicurezza = document.getElementById("rispostaSicurezza").value
 
         //Inserisco i dati in un oggetto
         data = {
@@ -38,7 +48,10 @@ function registraUtente(tipoCliente) {
             cognome: cognome,
             indirizzo: indirizzo,
             numeroCarta: numeroCarta,
-            dataScadenza: dataScadenza
+            dataScadenza: dataScadenza,
+
+            domandaSicurezza: domandaSicurezza,
+            rispostaSicurezza: rispostaSicurezza
     
         }
 
@@ -49,6 +62,11 @@ function registraUtente(tipoCliente) {
       email = document.getElementById("email").value
       password = document.getElementById("password").value
 
+      //Definisco in delle variabili la domanda e la risposta di sicurezza per l'eventuale recupero della password
+      //Per ottenere il testo della donmanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
+      domandaSicurezza = document.getElementById("domandaSicurezza").options[document.getElementById("domandaSicurezza").selectedIndex].text
+      rispostaSicurezza = document.getElementById("rispostaSicurezza").value
+
         //Inserisco i dati in un oggetto
         data = {
     
@@ -57,11 +75,15 @@ function registraUtente(tipoCliente) {
             password: password,
             tipoUtente: "artigiano",
 
+            //TODO: INSERIRE I CAMPI IN HTML
             nome: nome,
             cognome: cognome,
             indirizzo: indirizzo,
             numeroCarta: numeroCarta,
-            dataScadenza: dataScadenza
+            dataScadenza: dataScadenza,
+
+            domandaSicurezza: domandaSicurezza,
+            rispostaSicurezza: rispostaSicurezza
     
         }
 
@@ -116,6 +138,16 @@ function registraUtente(tipoCliente) {
         console.error('Errore nella richiesta:', error);
         alert('Errore nella richiesta');
       });
+
+}
+
+//Funzione di prova per stampare
+function stampa() {
+
+    console.log(document.getElementById("domandaSicurezza").options[document.getElementById("domandaSicurezza").selectedIndex].text)
+
+    const selectedIndex = document.getElementById("domandaSicurezza").selectedIndex;
+    const selectedOption = document.getElementById("domandaSicurezza").options[selectedIndex];
 
 }
 
