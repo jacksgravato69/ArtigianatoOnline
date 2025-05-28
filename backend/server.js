@@ -42,4 +42,10 @@ app.use('/api/registrazione', registrazioneAPI);
 app.use('/api/login', loginAPI);
 
 //Per immagini
-app.use(express.static('public'));
+app.use(express.static('public', {
+  etag: false,
+  lastModified: false,
+  setHeaders: (res, path) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
+  }
+}));
