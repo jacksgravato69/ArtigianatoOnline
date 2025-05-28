@@ -110,10 +110,20 @@ function registraUtente(tipoCliente) {
 
           if(tipoCliente == "cliente") {
 
+            //Salvo il token e l'utente nel localStorage
+            localStorage.setItem("token", response.token);
+            //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
+            localStorage.setItem("utente", JSON.stringify(response.utente));
+
             //Reindirizzo alla pagina di home del cliente
             window.location.replace('../../views/homeC.html');
 
           } else if(tipoCliente == "artigiano") {
+
+            //Salvo il token e l'utente nel localStorage
+            localStorage.setItem("token", response.token);
+            //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
+            localStorage.setItem("utente", JSON.stringify(response.utente));
 
             //Reindirizzo alla pagina di home dell'artigiano
             //TODO: CREARE PAGINA ARTIGIANO

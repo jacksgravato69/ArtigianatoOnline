@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const pool = require('../../db/db');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/', async(req, res) => {
 
@@ -26,7 +30,33 @@ router.post('/', async(req, res) => {
         //Query per inserimento dei dati di fatturazione dell'utente
         await pool.query('INSERT INTO \"DatiCarte\" VALUES ($1, $2, $3, $4, $5, $6)',[email, nome, cognome, indirizzo, hashedNumeroCarta, dataScadenza]);
 
-        res.status(200).json({ message: "Registrazione avvenuta con successo" });
+        //Creo il token JWT
+        const token = jwt.sign(
+
+            {
+                id: email,
+                username: username,
+                ruolo: tipoUtente
+
+            },
+            JWT_SECRET,
+            { expiresIn: '2h' }
+
+        );
+
+        res.status(200).json({ 
+
+            message: "Registrazione avvenuta con successo",
+            token: token,
+            utente: {
+
+                email: email,
+                username: username,
+                ruolo: tipoUtente
+
+            } 
+        
+        });
 
     } catch (err) {
 

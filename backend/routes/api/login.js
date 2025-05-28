@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const pool = require('../../db/db');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/', async(req, res) => {
 
@@ -27,8 +31,31 @@ router.post('/', async(req, res) => {
     //Se esiste l'utente, confronto la password ricevuta con quella salvata nel DB cifrata
     if (await bcrypt.compare(password, utente["Password"])) {
 
+        //Creo il token JWT
+        const token = jwt.sign(
+            {
+                id: utente["Email"],
+                username: utente["Username"],
+                ruolo: utente["TipoUtente"]
+            },
+            JWT_SECRET,
+            { expiresIn: '2h' }
+        );
+
         //Se la password è corretta, restituisco un success a true e il tipo di utente
-      return res.json({ success: true, tipoUtente: utente["TipoUtente"] });
+        return res.json({ 
+
+          success: true,
+          token: token,
+          utente: {
+
+            email: utente["Email"],
+            username: utente["Username"],
+            ruolo: utente["TipoUtente"]
+
+          }
+
+        });
 
     } else {
 
@@ -40,7 +67,7 @@ router.post('/', async(req, res) => {
   } catch (err) {
 
     console.error(err);
-    res.status(500).send('Errore server');
+    res.status(500).json({ error: 'Errore server' });
 
   }
 

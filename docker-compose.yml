@@ -16,6 +16,7 @@ services:
       DB_NAME: artigianatoonline
       DB_HOST: db
       DB_PORT: 5432
+      JWT_SECRET: vivaNapoli
 
   frontend:
     build: ./frontend
