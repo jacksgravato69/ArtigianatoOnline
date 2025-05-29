@@ -1,12 +1,8 @@
 body{
-    background-color:  white;
+    background-color:white;
+
 }
-#titolo{
-    text-align: center;
-}
-form{
-    text-align: center;
-}
+
 header{
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -17,6 +13,31 @@ header nav {
     padding: 5px;
     text-align: center;
 }
+
+h2{
+    text-align: center;
+    color:#4a7c59;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;           /* centro orizzontale */
+    padding: 2rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: left;            /* <-- fondamentale per allineare il testo a sinistra */
+}
+
+#account-info p {
+  margin-bottom: 1rem;  /* Spazio verticale tra le righe */
+  line-height: 1.5;     /* Migliora la leggibilità */
+}
+
+.metodo-pagamento {
+  margin-left: 1.5rem; /* oppure 20px */
+}
+
 
 button {
     text-align: center;

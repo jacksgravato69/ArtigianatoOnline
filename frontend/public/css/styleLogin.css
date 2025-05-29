@@ -1,9 +1,12 @@
 body{
-    background-color:  #F4EBD0;
+    background-color:  white;
+}
+header{
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 header nav {
-    background-color: #A8B5A2;
-    color: #3E4C59;
+    background-color: white;
+    color: #4a7c59;
     padding: 5px;
     text-align: center;
 }
@@ -17,13 +20,40 @@ form{
     text-align: center;
 }
 
-button{
+button {
     text-align: center;
-    background-color: #D97B54;
-    color: #3E4C59;
-    border: none;
+    background-color: white;
+    color: #4a7c59;
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.bottone {
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.1s;
+    margin-top: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.bottone:hover {
+    background-color: #3a6b49;
+}
+
+
+.bottone:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
     <head>
 
@@ -7,16 +8,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         
+        <link href="../public/css/account.css" rel="stylesheet">
     </head>
 
     <body>
+        <header>
+            <nav>
+                <h2>Account</h2>
+            </nav>
+        </header>
+        <main>
+            <section id="account-info">
+                <h3>Informazioni Account</h3>
+                <p><strong>Username:</strong> <span id="username">Caricamento...</span></p>
+                <p><strong>Email:</strong> <span id="email">Caricamento...</span></p>
+                <p><strong>Password:</strong> <span id="password">Caricamento...</span></p>
+                <p><strong>Indirizzo:</strong> <span id="indirizzo">Caricamento...</span></p>
+                <p><strong>Metodo di pagamento:</strong> </p>
+                    <div class="metodo-pagamento">
+                        <p><strong>Nome:</strong> <span id="nome">Caricamento...</span></p>
+                        <p><strong>Cognome:</strong> <span id="cognome">Caricamento...</span></p>
+                        <p><strong>Indirizzo di fatturazione:</strong> <span id="indirizzoF">Caricamento...</span></p>
+                        <p><strong>Numero carta:</strong> <span id="numCarta">Caricamento...</span></p>
+                        <p><strong>Scadenza:</strong> <span id="scadenza">Caricamento...</span></p>
+                    </div>
 
-        <div id="pulsanteIndietro">
-
-            <button onclick="window.location.href = '../index.html'">Indietro</button>
-
-        </div>
-
+                <div id="pulsanteIndietro">
+                    <button class="bottone" onclick="window.location.href = '../index.html'">Indietro</button>
+                </div>
+            </section>
+        </main>
     </body>
 
 </html>

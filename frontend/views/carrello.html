@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Carrello</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link href="../public/css/carrello.css" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <h2> Carrello </h2>
+        </nav>
+    </header>
+    <main>
+        <div class="carrellino">
+            <div class="headC">
+                <h2> Il tuo Carrello </h2>
+                <span id="count">(1 articolo)</span>
+            </div>
+
+            <div id="prodotti" class="prodottiC">
+                <div class="prodotto">
+                    <img src="../public/images/Prodotto.jpg" alt="Prodotto 1" class="imP">
+                    <div class="infoP">
+                        <h3 class="nomeP">Prodotto 1</h3>
+                        <div class="azioniP">
+                            <div class="quantita">
+                                <button class="butt-Quantita">-</button>
+                                <input type="number" min="1" value="1" class="inputQ" readonly>
+                                <button class="butt-Quantita">+</button>
+                            </div>
+                            <button class="buttRim">Rimuovi</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prodotto">
+                    <img src="../public/images/Prodotto.jpg" alt="Prodotto 2" class="imP">
+                    <div class="infoP">
+                        <h3 class="nomeP">Prodotto 2</h3>
+                        <div class="azioniP">
+                            <div class="quantita">
+                                <button class="butt-Quantita">-</button>
+                                <input type="number" min="1" value="1" class="inputQ" readonly>
+                                <button class="butt-Quantita">+</button>
+                            </div>
+                            <button class="buttRim">Rimuovi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DA FINIRE -->
+            <div class="riassunto">
+                <button class="checkout"> Procedi all'ordine</button>
+            </div>
+
+            <div id="carrVuoto" class="carrVuoto" style="display: none;">
+                <p>Il tuo carrello è vuoto</p>
+                <a href="/catalogo" class="bottone">Scopri i nostri prodotti</a>
+            </div>
+        </div>
+        <div class="loShoppingContinua">
+            <a onclick="window.location.href = '../homeC.html'">← Continua lo shopping</a>
+        </div>
+
+    </main>
+    <div id="pulsanteIndietro">
+        <button class="bottone" onclick="window.location.href = '../homeC.html'">Indietro</button>
+    </div>
+
+    
+
+</body>
+
+
+
+</html>
