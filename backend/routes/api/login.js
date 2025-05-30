@@ -16,7 +16,8 @@ router.post('/', async(req, res) => {
     try {
 
     //Inoltro una richiesta al database per cercare l'utente con l'email ricevuta
-    const result = await pool.query('SELECT * FROM \"ElencoUtenti\" WHERE \"Email\" = $1', [username]);
+    const resultUtente = await pool.query('SELECT * FROM \"ElencoUtenti\" WHERE \"Email\" = $1', [username]);
+    const resultCarta = await pool.query('SELECT * FROM \"ElencoUtenti\" WHERE \"Email\" = $1', [username])
 
     //Salvo in una variabile l'utente trovato
     const utente = result.rows[0];

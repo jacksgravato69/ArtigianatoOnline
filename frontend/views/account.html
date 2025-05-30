@@ -9,6 +9,9 @@
         <meta charset="UTF-8">
         
         <link href="../public/css/account.css" rel="stylesheet">
+
+        <script src="../public/js/account.js"></script>
+
     </head>
 
     <body>
@@ -20,8 +23,8 @@
         <main>
             <section id="account-info">
                 <h3>Informazioni Account</h3>
-                <p><strong>Username:</strong> <span id="username">Caricamento...</span></p>
-                <p><strong>Email:</strong> <span id="email">Caricamento...</span></p>
+                <p><strong>Username:</strong> <span id="username" contenteditable="false">Caricamento...</span> <button class="bottone" id="modificaUsername" onclick="modificaCampo('username')">Modifica Username</button> <button class="bottone" id="confermaModificaUsername" onclick="modifica('username')" hidden>Conferma modifiche</button></p> 
+                <p><strong>Email:</strong> <span id="email" contenteditable="false">Caricamento...</span> <button class="bottone" id="modificaMail" onclick="modificaCampo('mail')">Modifica Mail</button> <button class="bottone" id="confermaModificaMail" onclick="modifica('mail')" hidden>Conferma modifiche</button></p> 
                 <p><strong>Password:</strong> <span id="password">Caricamento...</span></p>
                 <p><strong>Indirizzo:</strong> <span id="indirizzo">Caricamento...</span></p>
                 <p><strong>Metodo di pagamento:</strong> </p>
@@ -32,6 +35,13 @@
                         <p><strong>Numero carta:</strong> <span id="numCarta">Caricamento...</span></p>
                         <p><strong>Scadenza:</strong> <span id="scadenza">Caricamento...</span></p>
                     </div>
+
+                <div id="modifica">
+
+                    <button class="bottone" id="modificaPagamento">Modifica metodo di pagamento</button>
+                    <button class="bottone" id="modificaPassword">Modifica Password</button>
+
+                </div>
 
                 <div id="pulsanteIndietro">
                     <button class="bottone" onclick="window.location.href = '../index.html'">Indietro</button>
