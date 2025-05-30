@@ -85,7 +85,6 @@ nav ul {
     border-radius: 50%;
     object-fit: cover;
 }
-        
 main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -164,7 +163,7 @@ button {
     transition: all 0.2s ease;
 }
 
-.aggiungi {
+.modifica {
     background-color: #4a7c59;
     color: white;
     border: none;
@@ -179,12 +178,12 @@ button {
 }
 
 
-.aggiungi:hover {
+.modifica:hover {
     background-color: #3a6b49;
 }
 
 
-.aggiungi:active {
+.modifica:active {
     transform: translateY(2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -199,7 +198,5 @@ footer {
     color:#4a7c59;
     text-align: center; 
 }
-
-
 
 

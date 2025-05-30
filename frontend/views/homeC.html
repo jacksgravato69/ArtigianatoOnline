@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
 
         <link href="../public/css/styleHomeC.css" rel="stylesheet">
-
+        <script src="../public/js/homeC.js"></script>
     </head>
 
     <body>
@@ -20,10 +20,10 @@
                       
                     <li class="right">
                         <a href="#carrello" id="carrello">
-                            <img src="../public/images/carrello.png" alt="Carrello" width="30" height="30" onclick="window.location.href = '/views/carrello.html'">
+                            <img src="../public/images/carrello1.png" alt="Carrello" width="30" height="30" onclick="window.location.href = '/views/carrello.html'">
                         </a>
                         <a href="#utente" id="utente">
-                            <img src="../public/images/utente.png" alt="Utente" width="30" height="30" onclick="window.location.href = '/views/account.html'">
+                            <img src="../public/images/utente1.png" alt="Utente" width="30" height="30" onclick="window.location.href = '/views/account.html'">
                         </a>
                     </li>
                 </ul>
@@ -39,20 +39,20 @@
                 <img src="../public/images/Prodotto.jpg" alt="Prodotto 1">
                 <h3>Prodotto 1</h3>
                 <p>Descrizione Prodotto </p>
-                <button class="aggiungi">Aggiungi al carrello</button>
+                <button class="aggiungi" data-nome="Prodotto 1">Aggiungi al carrello</button>
             </div>
     
             <div class="card" >
                 <img src="../public/images/Prodotto.jpg" alt="Prodotto 2">
                 <h3>Prodotto 2</h3>
                 <p>Descrizione Prodotto </p>
-                <button class="aggiungi">Aggiungi al carrello</button>
+                <button class="aggiungi" data-nome="Prodotto 2">Aggiungi al carrello</button>
             </div>
             <div class="card" >
                 <img src="../public/images/Prodotto.jpg" alt="Prodotto 3">
                 <h3>Prodotto 3</h3>
                 <p>Descrizione Prodotto </p>
-                <button class="aggiungi">Aggiungi al carrello</button>
+                <button class="aggiungi" data-nome="Prodotto 3">Aggiungi al carrello</button>
             </div>
         </div>
             <!-- Seconda riga di card -->
@@ -61,38 +61,33 @@
                     <img src="../public/images/Prodotto.jpg" alt="Prodotto 4">
                     <h3>Prodotto 4</h3>
                     <p>Descrizione Prodotto </p>
-                    <button class="aggiungi">Aggiungi al carrello</button>
+                    <button class="aggiungi" data-nome="Prodotto 4">Aggiungi al carrello</button>
                 </div>
                 <div class="card" >
                     <img src="../public/images/Prodotto.jpg" alt="Prodotto 5">
                     <h3>Prodotto 5</h3>
                     <p>Descrizione Prodotto </p>
-                    <button class="aggiungi">Aggiungi al carrello</button>
+                    <button class="aggiungi"data-nome="Prodotto 5">Aggiungi al carrello</button>
                 </div>
                 <div class="card" >
                     <img src="../public/images/Prodotto.jpg" alt="Prodotto 6">
                     <h3>Prodotto 6</h3>
                     <p>Descrizione Prodotto </p>
-                    <button class="aggiungi">Aggiungi al carrello</button>
+                    <button class="aggiungi" data-nome="Prodotto 6">Aggiungi al carrello</button>
                 </div>
             </div>
         </section>    
         </main>
-            <!-- Aggiungi altri prodotti qui -->
+
+        <footer>
+            <p>&copy; 2023 Artigiano Online. Tutti i diritti riservati.</p>
+        </footer>
         
 
     </body>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const toggle = document.querySelector(".search-toggle");
-          const container = document.querySelector(".search-container");
-      
-          toggle.addEventListener("click", () => {
-            container.classList.toggle("active");
-          });
-        });
-    </script>
+    
+
 
     <script>
 

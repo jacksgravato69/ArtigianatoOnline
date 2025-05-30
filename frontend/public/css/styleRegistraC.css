@@ -1,12 +1,25 @@
 body{
     background-color:  white;
 }
+
 #titolo{
     text-align: center;
 }
+
 form{
     text-align: center;
 }
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;           
+    padding: 2rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;            
+}
+
 header{
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

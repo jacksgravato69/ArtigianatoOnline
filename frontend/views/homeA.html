@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Artigiano</title>
+        <link href="../public/css/styleHomeA.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class="search-container">
+                        <button class="search-toggle">Ricerca</button>
+                        <input type="text" class="search-input" placeholder="Cerca...">
+                    </li>
+                    <li class="right">
+                        <a href="#ordini" id="ordini">
+                            <img src="../public/images/ordini.png" alt="Ordini" width="30" height="30">
+                        </a>
+                        <a href="#aggiungiP" id="aggiungiP">
+                            <img src="../public/images/aggiungiP.png" alt="aggiungiP" width="30" height="30">
+                        </a>
+                        <a href="#utente" id="utente">
+                            <img src="../public/images/utente1.png" alt="Utente" width="30" height="30" onclick="window.location.href = '/views/accountA.html'">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+        <section id="catalogo" class="grid-section"> <!-- Foto e data-desciption da sistemare -->
+        <h2>Catalogo</h2>
+        <!-- Prima riga di card -->
+        <div class="row">
+            <div class="card" >
+                <img src="../public/images/Prodotto.jpg" alt="Prodotto 1">
+                <h3>Prodotto 1</h3>
+                <p>Descrizione Prodotto </p>
+                <button class="modifica" data-nome="Prodotto 1">Modifica</button>
+            </div>
+    
+            <div class="card" >
+                <img src="../public/images/Prodotto.jpg" alt="Prodotto 2">
+                <h3>Prodotto 2</h3>
+                <p>Descrizione Prodotto </p>
+                <button class="modifica" data-nome="Prodotto 1">Modifica</button>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="card" >
+                    <img src="../public/images/Prodotto.jpg" alt="Prodotto 4">
+                    <h3>Prodotto 4</h3>
+                    <p>Descrizione Prodotto </p>
+                    <button class="modifica" data-nome="Prodotto 1">Modifica</button>
+                </div>
+                <div class="card" >
+                    <img src="../public/images/Prodotto.jpg" alt="Prodotto 5">
+                    <h3>Prodotto 5</h3>
+                    <p>Descrizione Prodotto </p>
+                    <button class="modifica" data-nome="Prodotto 1">Modifica</button>
+                </div>
+        </div>
+        </section>    
+        </main>
+
+        <button class="bottone" onclick="window.location.href = '/index'" id="indietro">Indietro</button> 
+
+        <footer>
+            <p>&copy; 2023 Artigiano Online. Tutti i diritti riservati.</p>
+        </footer>
+    </body>
+
+
+</html>

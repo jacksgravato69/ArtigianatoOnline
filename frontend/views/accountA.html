@@ -8,26 +8,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         
-        <link href="../public/css/account.css" rel="stylesheet">
+        <link href="../public/css/accountA.css" rel="stylesheet">
 
-        <script src="../public/js/account.js"></script>
+        <script src="../public/js/accountA.js"></script>
 
     </head>
 
     <body>
         <header>
             <nav>
-                <h2>Account</h2>
+                <h2>Account Artigiano</h2>
             </nav>
         </header>
         <main>
             <section id="account-info">
                 <h3>Informazioni Account</h3>
-                <p><strong>Username:</strong> <span id="username" contenteditable="false">Caricamento...</span> <button class="bottone" id="modificaUsername" onclick="modificaCampo('username')">Modifica Username</button> <button class="bottone" id="confermaModificaUsername" onclick="modifica('username')" hidden>Conferma modifiche</button></p> 
+                <p><strong>Nome Azienda:</strong> <span id="nomeAzienda" contenteditable="false">Caricamento...</span> <button class="bottone" id="modificaUsername" onclick="modificaCampo('username')">Modifica Username</button> <button class="bottone" id="confermaModificaUsername" onclick="modifica('username')" hidden>Conferma modifiche</button></p> 
                 <p><strong>Email:</strong> <span id="email" contenteditable="false">Caricamento...</span> <button class="bottone" id="modificaMail" onclick="modificaCampo('mail')">Modifica Mail</button> <button class="bottone" id="confermaModificaMail" onclick="modifica('mail')" hidden>Conferma modifiche</button></p> 
                 <p><strong>Password:</strong> <span id="password">Caricamento...</span><button class="bottone" id="modificaPassword">Modifica Password</button></p>
-                <p><strong>Indirizzo:</strong> <span id="indirizzo">Caricamento...</span></p>
-                <p><strong>Metodo di pagamento:</strong> <button class="bottone" id="modificaPagamento">Modifica metodo di pagamento</button></p>
                 
                 <div id="pulsanteIndietro">
                     <button class="bottone" onclick="window.location.href = '../index.html'">Indietro</button>
