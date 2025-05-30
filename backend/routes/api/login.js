@@ -17,10 +17,9 @@ router.post('/', async(req, res) => {
 
     //Inoltro una richiesta al database per cercare l'utente con l'email ricevuta
     const resultUtente = await pool.query('SELECT * FROM \"ElencoUtenti\" WHERE \"Email\" = $1', [username]);
-    const resultCarta = await pool.query('SELECT * FROM \"ElencoUtenti\" WHERE \"Email\" = $1', [username])
 
     //Salvo in una variabile l'utente trovato
-    const utente = result.rows[0];
+    const utente = resultUtente.rows[0];
 
     //Controllo se l'utente esiste, e nel caso non esista restituisco un success a false
     if (!utente) {
@@ -35,7 +34,7 @@ router.post('/', async(req, res) => {
         //Creo il token JWT
         const token = jwt.sign(
             {
-                id: utente["Email"],
+                email: utente["Email"],
                 username: utente["Username"],
                 ruolo: utente["TipoUtente"]
             },

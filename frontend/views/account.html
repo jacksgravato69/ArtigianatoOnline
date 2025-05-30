@@ -23,8 +23,20 @@
         <main>
             <section id="account-info">
                 <h3>Informazioni Account</h3>
-                <p><strong>Username:</strong> <span id="username" contenteditable="false">Caricamento...</span> <button class="bottone" id="modificaUsername" onclick="modificaCampo('username')">Modifica Username</button> <button class="bottone" id="confermaModificaUsername" onclick="modifica('username')" hidden>Conferma modifiche</button></p> 
-                <p><strong>Email:</strong> <span id="email" contenteditable="false">Caricamento...</span> <button class="bottone" id="modificaMail" onclick="modificaCampo('mail')">Modifica Mail</button> <button class="bottone" id="confermaModificaMail" onclick="modifica('mail')" hidden>Conferma modifiche</button></p> 
+                <p>
+                    <strong>Username:</strong>
+                    <span id="usernameSpan" contenteditable="false">Caricamento...</span>
+                    <input type="text" id="usernameInput" hidden required>
+                    <button class="bottone" id="modificaUsername" onclick="modificaCampo('username')">Modifica Username</button>
+                    <button class="bottone" id="confermaModificaUsername" onclick="modifica('username')" hidden>Conferma modifiche</button>
+                </p> 
+                <p>
+                    <strong>Email:</strong> 
+                    <span id="mailSpan" contenteditable="false">Caricamento...</span>
+                    <input type="email" id="mailInput" hidden required>
+                    <button class="bottone" id="modificaMail" onclick="modificaCampo('mail')">Modifica Mail</button> 
+                    <button class="bottone" id="confermaModificaMail" onclick="modifica('mail')" hidden>Conferma modifiche</button>
+                </p> 
                 <p><strong>Password:</strong> <span id="password">Caricamento...</span><button class="bottone" id="modificaPassword">Modifica Password</button></p>
                 <p><strong>Indirizzo:</strong> <span id="indirizzo">Caricamento...</span></p>
                 <p><strong>Metodo di pagamento:</strong> <button class="bottone" id="modificaPagamento">Modifica metodo di pagamento</button></p>

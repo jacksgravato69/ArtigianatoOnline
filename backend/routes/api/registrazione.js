@@ -34,7 +34,7 @@ router.post('/', async(req, res) => {
         const token = jwt.sign(
 
             {
-                id: email,
+                email: email,
                 username: username,
                 ruolo: tipoUtente
 
