@@ -74,7 +74,7 @@ function modifica(tipoModifica) {
 
             const nuovoUsername = document.getElementById("usernameInput").value;
 
-            let data = {
+            let dataUsername = {
 
                 nuovoUsername: nuovoUsername,
                 vecchiaMail: email,
@@ -93,7 +93,7 @@ function modifica(tipoModifica) {
 
                 },
                 //Indico il corpo, che contiene i dati da inviare al server trasformati in formato JSON
-                body: JSON.stringify(data)
+                body: JSON.stringify(dataUsername)
 
             })
             .then(res => res.json())
@@ -120,6 +120,73 @@ function modifica(tipoModifica) {
 
                 console.error('Errore nella modifica dello username: ' + err);
                 alert('Errore nella modifica dello username');
+
+            })
+
+            break;
+
+        case "mail":
+
+        if (!inputMail.checkValidity()) {
+
+            alert("Inserisci un'email valida.");
+            return;
+
+        }
+
+        const nuovaMail = document.getElementById("mailInput").value;
+
+            let dataMail = {
+
+                vecchioUsername: username,
+                nuovaMail: nuovaMail,
+                tipoUtente: tipoUtente,
+                tipoModifica: tipoModifica
+
+            }
+
+            fetch('http://localhost:3000/api/modifica', {
+
+                method: 'POST',
+                headers: {
+
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    'Content-Type': 'application/json'
+
+                },
+                //Indico il corpo, che contiene i dati da inviare al server trasformati in formato JSON
+                body: JSON.stringify(dataMail)
+
+            })
+            .then(res => res.json())
+            .then(data => {
+
+                //Salvo il token e l'utente nel localStorage
+                localStorage.setItem("token", data.token);
+                //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
+                localStorage.setItem("utente", JSON.stringify(data.utente));
+
+                console.log("appost");
+                
+                //Rimuovo l'input e mostro lo span
+                spanMail.hidden = false;
+                inputMail.hidden = true;
+                
+                console.log("appost1");
+
+                //Aggiorno lo span con la nuova mail
+                spanMail.textContent = JSON.parse(localStorage.getItem("utente")).email;
+
+                console.log("appost2");
+
+                //"Nascondo" il pulsante per confermare la mail e mostro quello per modificare le informazioni
+                document.getElementById("modificaMail").hidden = false;
+                document.getElementById("confermaModificaMail").hidden = true;
+
+            }).catch(err => {
+
+                console.error('Errore nella modifica della mail: ' + err);
+                alert('Errore nella modifica della mail');
 
             })
 
