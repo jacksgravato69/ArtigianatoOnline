@@ -7,7 +7,7 @@ let rispostaSicurezza
 
 //Funzione che viene chiamata quando il Cliente preme il tasto per confermare la registrazione
 //TODO: aggiungere i controlli per verificare i dati inseriti dall'utente
-function registraUtente(tipoCliente) {
+function registraUtente(event, tipoCliente) {
 
     //Prevenire il comportamento predefinito del form per evitare che escano i dati di login nella search bar e non refreshare la pagina
     event.preventDefault();
@@ -102,18 +102,20 @@ function registraUtente(tipoCliente) {
         body: JSON.stringify(data)
 
         //Controllo la risposta del server, se tutto è andato a buon fine, mi reindirizza alla pagina home, altrimenti stampa un errore
-    }).then(response => {
+    })
+    .then(res => res.json())
+    .then(data => {
 
-        if (response.ok) {
+        if (data.success) {
 
           console.log('Registrazione riuscita, redirigo...');
 
           if(tipoCliente == "cliente") {
 
             //Salvo il token e l'utente nel localStorage
-            localStorage.setItem("token", response.token);
+            localStorage.setItem("token", data.token);
             //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
-            localStorage.setItem("utente", JSON.stringify(response.utente));
+            localStorage.setItem("utente", JSON.stringify(data.utente));
 
             //Reindirizzo alla pagina di home del cliente
             window.location.replace('../../views/homeC.html');
@@ -121,9 +123,9 @@ function registraUtente(tipoCliente) {
           } else if(tipoCliente == "artigiano") {
 
             //Salvo il token e l'utente nel localStorage
-            localStorage.setItem("token", response.token);
+            localStorage.setItem("token", data.token);
             //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
-            localStorage.setItem("utente", JSON.stringify(response.utente));
+            localStorage.setItem("utente", JSON.stringify(data.utente));
 
             //Reindirizzo alla pagina di home dell'artigiano
             //TODO: CREARE PAGINA ARTIGIANO
@@ -134,12 +136,7 @@ function registraUtente(tipoCliente) {
 
         } else {
 
-          return response.text().then(errorData => {
-
-            console.log('Errore risposta:', errorData);
             alert('Errore durante la registrazione');
-
-          });
 
         }
 

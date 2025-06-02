@@ -3,12 +3,14 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../../db/db');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const { hashPassword } = require('./registrazione');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/', verificaToken, async(req, res) => {
 
-  //req.utente contiene: email, username, ruolo...
+  //req.utente contiene: email, username e ruolo
 
   const tipoModifica = req.body.tipoModifica;
   
@@ -32,7 +34,7 @@ router.post('/', verificaToken, async(req, res) => {
                             email: vecchiaMail,
                             username: nuovoUsername,
                             ruolo: tipoUtente
-                            
+
                         }
 
                     });
@@ -135,6 +137,59 @@ router.post('/', verificaToken, async(req, res) => {
                 });
 
                 break;
+
+            case "password":
+
+                //Salvo in delle variabili i dati ricevuti dal client
+                const {nuovaPassword, confermaNuovaPassword, rispostaDomanda} = req.body;
+
+                //Effettuo una query per cercare l'utente con l'email che ha effettuato la richiesta
+                const resultUtente = await pool.query('SELECT * FROM \"ElencoUtenti\" WHERE \"Email\" = $1', [req.utente.email]);
+
+                //Salvo in una variabile l'utente trovato
+                const utente = resultUtente.rows[0];
+
+                //Controllo se l'utente esiste, e nel caso non esista restituisco un success a false
+                if (!utente) {
+
+                    //Se non esiste, restituisco un success a false che indica un errore
+                    return res.status(400).json({ 
+
+                        success: false
+
+                    });
+
+                }
+
+                //Se l'utente esiste, confronto la risposta alla domanda di sicurezza ricevuta con quella salvata nel DB cifrato
+                if(await bcrypt.compare(rispostaDomanda, utente["RispostaSicurezza"])) {
+
+                    //Se la risposta è corretto, hasho la nuova password
+                    const hashedPassword = await hashPassword(nuovaPassword);
+
+                    //Aggiorno la password dell'utente
+                    await pool.query('UPDATE \"ElencoUtenti\" SET \"Password\" = $1 WHERE \"Email\" = $2', [hashedPassword, req.utente.email])
+
+                    res.json({
+
+                        success: true,
+                        message: "Password modifica con successo"
+
+                    })
+
+                } else {
+
+                    //Se la risposta è sbagliata, restituisco un success a false che indica un errore
+                    return res.status(400).json({ 
+
+                        success: false
+
+                    });
+
+                }
+
+
+            
 
         }
 

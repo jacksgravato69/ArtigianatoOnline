@@ -1,4 +1,4 @@
-function loginUtente() {
+function loginUtente(event) {
 
     //Prevenire il comportamento predefinito del form per evitare che escano i dati di login nella search bar e non refreshare la pagina
     event.preventDefault();

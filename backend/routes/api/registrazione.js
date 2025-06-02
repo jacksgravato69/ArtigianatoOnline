@@ -47,12 +47,14 @@ router.post('/', async(req, res) => {
         res.status(200).json({ 
 
             message: "Registrazione avvenuta con successo",
+            success: true,
             token: token,
             utente: {
 
                 email: email,
                 username: username,
-                ruolo: tipoUtente
+                ruolo: tipoUtente,
+                domandaSicurezza: domandaSicurezza
 
             } 
         
@@ -61,7 +63,12 @@ router.post('/', async(req, res) => {
     } catch (err) {
 
         console.error("Errore durante la registrazione:", err);
-        res.status(500).json({ error: "Errore durante la registrazione" });
+        res.status(500).json({ 
+
+            error: "Errore durante la registrazione",
+            success: false
+        
+        });
 
     }
 
@@ -123,3 +130,4 @@ function validaCartaConLuhn(numeroCarta) {
 
 
 module.exports = router;
+module.exports.hashPassword = hashPassword;

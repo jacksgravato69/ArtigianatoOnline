@@ -34,9 +34,11 @@ router.post('/', async(req, res) => {
         //Creo il token JWT
         const token = jwt.sign(
             {
+
                 email: utente["Email"],
                 username: utente["Username"],
                 ruolo: utente["TipoUtente"]
+                
             },
             JWT_SECRET,
             { expiresIn: '2h' }
@@ -51,7 +53,8 @@ router.post('/', async(req, res) => {
 
             email: utente["Email"],
             username: utente["Username"],
-            ruolo: utente["TipoUtente"]
+            ruolo: utente["TipoUtente"],
+            domandaSicurezza: utente["DomandaSicurezza"]
 
           }
 
