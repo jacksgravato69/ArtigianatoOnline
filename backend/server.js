@@ -9,6 +9,7 @@ app.use(cors());
 const registrazioneAPI = require('./routes/api/registrazione.js');
 const loginAPI = require('./routes/api/login.js');
 const modificaAPI = require('./routes/api/modifica.js');
+const creaProdottoAPI = require('./routes/api/creaProdotto.js');
 
 //Dico di leggere tutti i file statici dalla cartella public; tutti i file che si trovano in questa cartella sono accessibili come se si trovssero nella root
 //app.use(express.static(__dirname + "/public"));
@@ -40,6 +41,9 @@ app.use('/api/login', loginAPI);
 //Indica che tutte le richieste che iniziano con /api/modifica verranno gestite da quello che c’è nel file modifica.js
 app.use('/api/modifica', modificaAPI);
 
+//Indica che tutte le richieste che iniziano con /api/modifica verranno gestite da quello che c’è nel file modifica.js
+app.use('/api/creaProdotto', creaProdottoAPI);
+
 //Per immagini
 app.use(express.static('public', {
   etag: false,
@@ -48,6 +52,9 @@ app.use(express.static('public', {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
   }
 }));
+
+//Così facendo rendo accessibile la cartella uploads anche al frontend
+app.use('/uploads', express.static('uploads'));
 
 //Quando viene creato il server, stampo un messaggio del link di dove si trova
 app.listen(port,'0.0.0.0', () => {

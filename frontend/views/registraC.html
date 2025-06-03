@@ -20,7 +20,7 @@
     <br><br>
 
     <main>
-    <form id="registrationForm">
+    <form id="registrationForm" data-tipoUtente="cliente">
 
         <label for="nome">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
@@ -61,7 +61,7 @@
             <label for="scadenza">Scadenza:</label>
             <input type="date" id="scadenza" name="scadenza" required><br><br>
 
-        <button class="bottone" type="submit" onclick="registraUtente(event, 'cliente')">Registrati</button><br><br>
+        <button class="bottone" type="submit">Registrati</button><br><br>
         <button class="bottone" onclick="window.location.href = '/index'" id="indietro">Indietro</button>
     </form>
     </main>

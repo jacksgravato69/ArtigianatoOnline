@@ -39,17 +39,24 @@ function loginUtente(event) {
                 //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
                 localStorage.setItem("utente", JSON.stringify(data.utente));
 
-                //Reindirizzo alla pagina di home del cliente
-                window.location.replace('../../views/homeC.html');
+                if(data.utente.ruolo === 'artigiano') {
 
-         }
+                    //Reindirizzo alla pagina di home dell'artigiano
+                    window.location.replace('../../views/homeA.html');
 
-            /*
-            //TODO: gestire il reindirizzamento in base al tipo di utente
-            // Redirigi in base al tipo utente
-            if (data.tipoUtente === 'cliente') window.location.href = '/homeCliente';
-            else if (data.tipoUtente === 'artigiano') window.location.href = '/homeArtigiano';
-            */
+                } else if(data.utente.ruolo === 'cliente') {
+
+                    //Reindirizzo alla pagina di home del cliente
+                    window.location.replace('../../views/homeC.html');
+    
+                } else {
+
+                    alert("Tipo utente non riconosciuto.")
+
+                }
+
+            }
+
 
         } else {
 

@@ -5,24 +5,38 @@ let password
 let domandaSicurezza
 let rispostaSicurezza
 
+//Metto un listener per il form che intercetta l'evento di submit, per poi richiamare la funzione registraUtente
+document.addEventListener('DOMContentLoaded', function() {
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+
+        //Prevenire il comportamento predefinito del form per evitare che escano i dati di login nella search bar e non refreshare la pagina
+        event.preventDefault();
+
+        //Ottengo il tipo di utente che si sta registrando dal data-attribute del form
+        const tipoUtente = document.getElementById("registrationForm").dataset.tipoutente;
+
+        //Chiamo la funzione per registrare l'utente
+        registraUtente(tipoUtente);
+
+    });
+
+});
+
 //Funzione che viene chiamata quando il Cliente preme il tasto per confermare la registrazione
 //TODO: aggiungere i controlli per verificare i dati inseriti dall'utente
-function registraUtente(event, tipoCliente) {
-
-    //Prevenire il comportamento predefinito del form per evitare che escano i dati di login nella search bar e non refreshare la pagina
-    event.preventDefault();
+function registraUtente(tipoCliente) {
 
     let data = {};
+
+    console.log("Tipo cliente:", tipoCliente);
     
     if(tipoCliente == "cliente") {
       
       //Definisco in delle variabili i dati inseriti dall'utente
       username = document.getElementById("username").value
       email = document.getElementById("email").value
-      password = document.getElementById("password").value
-      //Per ottenere il testo della donmanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
-      domandaSicurezza = document.getElementById("domandaSicurezza").options[document.getElementById("domandaSicurezza").selectedIndex].text
-      rispostaSicurezza = document.getElementById("rispostaSicurezza").value    
+      password = document.getElementById("password").value   
 
       //Defininisco in delle variabili le informazioni per il metodo di pagamento
       nome = document.getElementById("nome").value
@@ -30,6 +44,9 @@ function registraUtente(event, tipoCliente) {
       indirizzo = document.getElementById("indirizzo").value
       numeroCarta = document.getElementById("numeroCarta").value
       dataScadenza = document.getElementById("scadenza").value
+
+      console.log("Numero carta ", numeroCarta)
+      console.log("mail", email)
 
       //Definisco in delle variabili la domanda e la risposta di sicurezza per l'eventuale recupero della password
       //Per ottenere il testo della donmanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
@@ -62,8 +79,18 @@ function registraUtente(event, tipoCliente) {
       email = document.getElementById("email").value
       password = document.getElementById("password").value
 
+      //Defininisco in delle variabili le informazioni per il metodo di pagamento
+      nome = document.getElementById("nome").value
+      cognome = document.getElementById("cognome").value
+      indirizzo = document.getElementById("indirizzo").value
+      numeroCarta = document.getElementById("numeroCarta").value
+      dataScadenza = document.getElementById("scadenza").value
+
+      console.log("Numero carta ", numeroCarta)
+      console.log("mail", email)
+
       //Definisco in delle variabili la domanda e la risposta di sicurezza per l'eventuale recupero della password
-      //Per ottenere il testo della donmanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
+      //Per ottenere il testo della domanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
       domandaSicurezza = document.getElementById("domandaSicurezza").options[document.getElementById("domandaSicurezza").selectedIndex].text
       rispostaSicurezza = document.getElementById("rispostaSicurezza").value
 
@@ -75,7 +102,6 @@ function registraUtente(event, tipoCliente) {
             password: password,
             tipoUtente: "artigiano",
 
-            //TODO: INSERIRE I CAMPI IN HTML
             nome: nome,
             cognome: cognome,
             indirizzo: indirizzo,
@@ -89,6 +115,7 @@ function registraUtente(event, tipoCliente) {
 
     }
 
+    console.log("Dati inviati:", data);
 
     //Inoltro la richiesta di registrazione al server per la registrazione passando i dati in formato JSON, e salvo la risposta in una variabile
     const response = fetch('http://localhost:3000/api/registrazione', {
@@ -128,15 +155,14 @@ function registraUtente(event, tipoCliente) {
             localStorage.setItem("utente", JSON.stringify(data.utente));
 
             //Reindirizzo alla pagina di home dell'artigiano
-            //TODO: CREARE PAGINA ARTIGIANO
-            window.location.replace('../../views/homeC.html');
+            window.location.replace('../../views/homeA.html');
 
           }
 
 
         } else {
 
-            alert('Errore durante la registrazione');
+            alert('Errore durante la registrazione', data.message);
 
         }
 

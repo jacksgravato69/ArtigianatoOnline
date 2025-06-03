@@ -5,6 +5,7 @@ const pool = require('../../db/db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { hashPassword } = require('./registrazione');
+const { validaCartaConLuhn } = require('./registrazione');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -83,7 +84,7 @@ router.post('/', verificaToken, async(req, res) => {
                     return res.status(200).json({ 
 
                         message: "La nuova email è uguale a quella attuale. Nessuna modifica effettuata.",
-                        token: req.headers.authorization.split(' ')[1], // restituisci il token attuale
+                        token: req.headers.authorization.split(' ')[1], //Restituisco il token attuale
                         utente: {
 
                             email: nuovaMail,
@@ -96,7 +97,7 @@ router.post('/', verificaToken, async(req, res) => {
 
                 }
 
-                //Controllo la maila è già in uso
+                //Controllo se la mail è già in uso
                 const { rows: emailEsistente } = await pool.query('SELECT * FROM \"ElencoUtenti\" WHERE \"Email\" = $1', [nuovaMail]);
 
                 if (emailEsistente.length > 0) {
@@ -107,6 +108,7 @@ router.post('/', verificaToken, async(req, res) => {
 
                 //Aggiorno l'email
                 await pool.query('UPDATE \"ElencoUtenti\" SET \"Email\" = $1 WHERE \"Email\" = $2', [nuovaMail, req.utente.email]);
+                await pool.query('UPDATE \"DatiCarte\" SET \"Email\" = $1 WHERE \"Email\" = $2', [nuovaMail, req.utente.email])
 
                 //Ricreo il token JWT con la nuova email
                 const newToken = jwt.sign(
@@ -187,6 +189,40 @@ router.post('/', verificaToken, async(req, res) => {
                     });
 
                 }
+
+                break;
+
+            case "pagamento":
+
+                //Salvo in delle variabili i dati ricevuti dal client
+                const {nome, cognome, indirizzo, numeroCarta, scadenza} = req.body;
+
+                //Controllo se il numero della carta di credito è valido
+                if (!validaCartaConLuhn(numeroCarta)) {
+
+                    console.log("ASGARRA")
+
+                    return res.status(400).json({
+
+                        success: false,
+                        message: "Numero della carta di credito non valido"
+
+                    });
+
+                }
+
+                //Hasho il nuovo numero di carta
+                const hashedNumeroCarta = await hashPassword(numeroCarta);
+
+                //Aggiorno i dati del metodo di pagamento dell'utente nel DB
+                await pool.query('UPDATE \"DatiCarte\" SET \"Nome\" = $1, \"Cognome\" = $2, \"Indirizzo\" = $3, \"NumeroCarta\" = $4, \"DataScadenza\" = $5  WHERE \"Email\" = $6', [nome, cognome, indirizzo, hashedNumeroCarta, scadenza, req.utente.email]);
+
+                res.status(200).json({
+
+                    success: true,
+                    message: "Metodo di pagamento modificato con successo"
+
+                })
 
 
             
