@@ -55,9 +55,9 @@
 
             <p>
                 <strong>Quantità:</strong>
-                <button class="butt-Quantita">-</button>
-                <input name="quantità" type="number" min="1" value="1" class="inputQ" readonly>
-                <button class="butt-Quantita">+</button>
+                <button class="butt-Quantita" onclick="modificaQuantita('-')" type="button">-</button>
+                <input name="quantità" id="quantitaInput" type="number" min="1" value="1" class="inputQ" readonly>
+                <button class="butt-Quantita" onclick="modificaQuantita('+')" type="button">+</button>
             </p>
             <p>
                 <strong>Prezzo:</strong>

@@ -24,22 +24,33 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Rotta per creare un nuovo prodotto
-router.post('/creaProdotto', upload.single('immagine'), async (req, res) => {
+//'immagine' è il name del campo HTML dell'input per le foto
+router.post('/', verificaToken, upload.single('immagine'), async (req, res) => {
+
   try {
-    const { nomeProdotto } = req.body;
+    
+    const {nomeProdotto, immagineProdotto, descrizioneProdotto, tipologiaProdotto, quantita, prezzoProdotto} = req.body;
     const immaginePath = req.file.filename;
 
-    await pool.query(
-      'INSERT INTO "Prodotti" ("Nome", "PercorsoImmagine") VALUES ($1, $2)',
-      [nomeProdotto, immaginePath]
-    );
+    await pool.query('INSERT INTO \"ElencoProdotti\" (\"Email\", \"NomeProdotto\", \"Immagine\", \"Descrizione\", \"Tipologia\", \"Quantità\", \"Prezzo\") VALUES ($1, $2, $3, $4, $5, $6, $7)',[req.utente.email, nomeProdotto, immaginePath, descrizioneProdotto, tipologiaProdotto, quantita, prezzoProdotto]);
 
-    res.status(200).json({ message: "Prodotto salvato con successo!" });
+    res.status(200).json({
+
+        message: "Prodotto salvato con successo!"
+    
+    });
+
   } catch (err) {
+
     console.error("Errore nella creazione del prodotto:", err);
-    res.status(500).json({ error: "Errore server" });
+    res.status(500).json({
+
+        message: "Errore nella creazione del prodotto"
+    
+    });
+
   }
+
 });
 
 
