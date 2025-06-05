@@ -41,21 +41,32 @@ function aggiungiProdotto() {
     fetch('http://localhost:3000/api/creaProdotto', {
 
         method: 'POST',
-        headers: {
-
-            'Authorization': 'Bearer ' + localStorage.getItem("token"),
-            
-        },
-        body: formData
+        body: formData,
+        credentials: 'include'
 
     })
     .then(res => res.json())
     .then(data => {
 
+        console.log("Risposta dal server:", data);
+        console.log("funziona? ", data.success)
+
         if(data.success) {
 
             //Stampo il messaggio di successo
             alert(data.message);
+
+            /*
+            document.getElementById("nomeProdottoInput").value = "";
+            document.getElementById("immagineProdottoInput").value =""
+            document.getElementById("descrizioneProdottoInput").value = "";
+            document.getElementById("quantitaInput").value = 1;
+            document.getElementById("prezzoProdottoInput").value = ""; 
+            */
+
+            document.getElementById("aggiungiProdottoForm").reset();
+            
+            console.log("Nome:", document.getElementById("nomeProdottoInput").value);
 
         } else {
 

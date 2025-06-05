@@ -45,20 +45,28 @@ router.post('/', async(req, res) => {
         );
 
         //Se la password è corretta, restituisco un success a true e il tipo di utente
-        return res.json({ 
+        return res
+                .cookie('token', token, {
 
-          success: true,
-          token: token,
-          utente: {
+                  httpOnly: true, //Cookie accessibile solo lato server con richieste HTTP
+                  secure: false, //Settato a false il cookie può essere inviato anche con connessioni HTTP (anche se non sono HTTPS)
+                  sameSite: 'Lax', //Cookie inviato solo per richieste in sito
+                  maxAge: 2 * 60 * 60 * 1000 //Tempo di durata del cookie in ms, messo con questo calcolo per abbreviare la cifra
 
-            email: utente["Email"],
-            username: utente["Username"],
-            ruolo: utente["TipoUtente"],
-            domandaSicurezza: utente["DomandaSicurezza"]
+                })
+                .json({ 
 
-          }
+                  success: true,
+                  utente: {
 
-        });
+                    email: utente["Email"],
+                    username: utente["Username"],
+                    ruolo: utente["TipoUtente"],
+                    domandaSicurezza: utente["DomandaSicurezza"]
+
+                  }
+
+                });
 
     } else {
 

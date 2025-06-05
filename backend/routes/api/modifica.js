@@ -4,8 +4,8 @@ const router = express.Router();
 const pool = require('../../db/db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { hashPassword } = require('./registrazione');
-const { validaCartaConLuhn } = require('./registrazione');
+const { hashPassword } = require('../../utils/funzioni');
+const { validaCartaConLuhn } = require('../../utils/funzioni');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -29,7 +29,7 @@ router.post('/', verificaToken, async(req, res) => {
                     return res.status(200).json({ 
 
                         message: "Il nuovo username è uguale a quello attuale. Nessuna modifica effettuata.",
-                        token: req.headers.authorization.split(' ')[1], // restituisci il token attuale
+                        token: req.cookies.token, //Restituisco il token attuale
                         utente: {
 
                             email: vecchiaMail,
@@ -58,19 +58,28 @@ router.post('/', verificaToken, async(req, res) => {
                 
                 );
         
-                res.status(200).json({ 
+                res.status(200)
+                    .cookie('token', token, {
+
+                        httpOnly: true,
+                        secure: false,
+                        sameSite: 'Lax',
+                        maxAge: 2 * 60 * 60 * 1000
+
+                    })
+                    .json({ 
         
-                    message: "Registrazione avvenuta con successo " + nuovoUsername + req.utente.email,
-                    token: token,
-                    utente: {
+                        message: "Registrazione avvenuta con successo " + nuovoUsername + req.utente.email,
+                        token: token,
+                        utente: {
         
-                        email: vecchiaMail,
-                        username: nuovoUsername,
-                        ruolo: tipoUtente
+                            email: vecchiaMail,
+                            username: nuovoUsername,
+                            ruolo: tipoUtente
         
-                    } 
+                        } 
         
-                });
+                    });
 
                 break;
 
@@ -84,7 +93,7 @@ router.post('/', verificaToken, async(req, res) => {
                     return res.status(200).json({ 
 
                         message: "La nuova email è uguale a quella attuale. Nessuna modifica effettuata.",
-                        token: req.headers.authorization.split(' ')[1], //Restituisco il token attuale
+                        token: req.cookies.token, //Restituisco il token attuale
                         utente: {
 
                             email: nuovaMail,
@@ -124,19 +133,28 @@ router.post('/', verificaToken, async(req, res) => {
                 
                 );
 
-                res.status(200).json({ 
+                res.status(200)
+                    .cookie('token', newToken, {
+
+                        httpOnly: true,
+                        secure: false,
+                        sameSite: 'Lax',
+                        maxAge: 2 * 60 * 60 * 1000
+
+                    })
+                    .json({ 
         
-                    message: "Modifica avvenuta con successo",
-                    token: newToken,
-                    utente: {
+                        message: "Modifica avvenuta con successo",
+                        token: newToken,
+                        utente: {
         
-                        email: nuovaMail,
-                        username: vecchioUsername,
-                        ruolo: tipoUtenteM
+                            email: nuovaMail,
+                            username: vecchioUsername,
+                            ruolo: tipoUtenteM
         
-                    } 
+                        } 
         
-                });
+                    });
 
                 break;
 
@@ -199,8 +217,6 @@ router.post('/', verificaToken, async(req, res) => {
 
                 //Controllo se il numero della carta di credito è valido
                 if (!validaCartaConLuhn(numeroCarta)) {
-
-                    console.log("ASGARRA")
 
                     return res.status(400).json({
 

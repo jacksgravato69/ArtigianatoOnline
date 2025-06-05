@@ -22,7 +22,8 @@ function loginUtente(event) {
             'Content-Type': 'application/json'
         },
         //Indico il corpo, che contiene i dati da inviare al server trasformati in formato JSON
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
 
         //Controllo la risposta del server, se tutto è andato a buon fine, mi reindirizza alla pagina home, altrimenti stampa un errore
     })
@@ -32,12 +33,12 @@ function loginUtente(event) {
         //Se tutto è andato a buon fine (quindi success è a true) reindirizzo l'utente alla pagina home cliente
         if (data.success) {
 
-            if (data.token) {
-
-                //Salvo il token e l'utente nel localStorage
-                localStorage.setItem("token", data.token);
+                //Salvo l'utente nel localStorage
                 //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
                 localStorage.setItem("utente", JSON.stringify(data.utente));
+
+                //Creo una lista che conterrà i prodotti aggiunti al carrello
+                localStorage.setItem("carrello", JSON.stringify([]));
 
                 if(data.utente.ruolo === 'artigiano') {
 
@@ -54,8 +55,6 @@ function loginUtente(event) {
                     alert("Tipo utente non riconosciuto.")
 
                 }
-
-            }
 
 
         } else {

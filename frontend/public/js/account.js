@@ -88,19 +88,17 @@ function modifica(tipoModifica) {
                 method: 'POST',
                 headers: {
 
-                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                     'Content-Type': 'application/json'
 
                 },
                 //Indico il corpo, che contiene i dati da inviare al server trasformati in formato JSON
-                body: JSON.stringify(dataUsername)
+                body: JSON.stringify(dataUsername),
+                credentials: 'include'
 
             })
             .then(res => res.json())
             .then(data => {
 
-                //Salvo il token e l'utente nel localStorage
-                localStorage.setItem("token", data.token);
                 //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
                 localStorage.setItem("utente", JSON.stringify(data.utente));
                 
@@ -110,7 +108,6 @@ function modifica(tipoModifica) {
                 
                 //Aggiorno lo span con il nuovo username
                 spanUsername.textContent = JSON.parse(localStorage.getItem("utente")).username;
-
 
                 //"Nascondo" il pulsante per confermare l'username e mostro quello per modificare le informazioni
                 document.getElementById("modificaUsername").hidden = false;
@@ -150,19 +147,17 @@ function modifica(tipoModifica) {
                 method: 'POST',
                 headers: {
 
-                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
                     'Content-Type': 'application/json'
 
                 },
                 //Indico il corpo, che contiene i dati da inviare al server trasformati in formato JSON
-                body: JSON.stringify(dataMail)
+                body: JSON.stringify(dataMail),
+                credentials: 'include'
 
             })
             .then(res => res.json())
             .then(data => {
 
-                //Salvo il token e l'utente nel localStorage
-                localStorage.setItem("token", data.token);
                 //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
                 localStorage.setItem("utente", JSON.stringify(data.utente));
 

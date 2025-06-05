@@ -62,21 +62,30 @@ router.post('/', async(req, res) => {
 
         );
 
-        res.status(200).json({ 
+        res.status(200)
+            .cookie('token', token, {
 
-            message: "Registrazione avvenuta con successo",
-            success: true,
-            token: token,
-            utente: {
+                  httpOnly: true,
+                  secure: false,
+                  sameSite: 'Lax',
+                  maxAge: 2 * 60 * 60 * 1000
 
-                email: email,
-                username: username,
-                ruolo: tipoUtente,
-                domandaSicurezza: domandaSicurezza
+                })
+            .json({ 
 
-            } 
-        
-        });
+                message: "Registrazione avvenuta con successo",
+                success: true,
+                token: token,
+                utente: {
+
+                    email: email,
+                    username: username,
+                    ruolo: tipoUtente,
+                    domandaSicurezza: domandaSicurezza
+
+                } 
+            
+            });
 
     } catch (err) {
 

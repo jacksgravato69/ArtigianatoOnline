@@ -36,7 +36,8 @@ router.post('/', verificaToken, upload.single('immagine'), async (req, res) => {
 
     res.status(200).json({
 
-        message: "Prodotto salvato con successo!"
+        message: "Prodotto salvato con successo!",
+        success: true
     
     });
 
@@ -45,6 +46,7 @@ router.post('/', verificaToken, upload.single('immagine'), async (req, res) => {
     console.error("Errore nella creazione del prodotto:", err);
     res.status(500).json({
 
+        success: false,
         message: "Errore nella creazione del prodotto"
     
     });

@@ -41,13 +41,13 @@ function cambiaPassword(tipoModifica) {
         method: 'POST',
         headers: {
 
-            'Authorization': 'Bearer ' + localStorage.getItem("token"),
             'Content-Type': 'application/json'
 
         },
 
         //Indico il corpo, che contiene i dati da inviare al server trasformati in formato JSON
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
 
     })
     .then(res => res.json())

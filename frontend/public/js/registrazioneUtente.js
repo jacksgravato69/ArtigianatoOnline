@@ -126,7 +126,8 @@ function registraUtente(tipoCliente) {
             'Content-Type': 'application/json'
         },
         //Indico il corpo, che contiene i dati da inviare al server trasformati in formato HSON
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
 
         //Controllo la risposta del server, se tutto è andato a buon fine, mi reindirizza alla pagina home, altrimenti stampa un errore
     })
@@ -135,12 +136,12 @@ function registraUtente(tipoCliente) {
 
         if (data.success) {
 
-          console.log('Registrazione riuscita, redirigo...');
-
           if(tipoCliente == "cliente") {
 
-            //Salvo il token e l'utente nel localStorage
-            localStorage.setItem("token", data.token);
+            //Creo una lista che conterrà i prodotti aggiunti al carrello
+            localStorage.setItem("carrello", JSON.stringify([]));
+
+            //Salvo l'utente nel localStorage
             //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
             localStorage.setItem("utente", JSON.stringify(data.utente));
 
@@ -149,8 +150,10 @@ function registraUtente(tipoCliente) {
 
           } else if(tipoCliente == "artigiano") {
 
-            //Salvo il token e l'utente nel localStorage
-            localStorage.setItem("token", data.token);
+            //Creo una lista che conterrà i prodotti aggiunti al carrello
+            localStorage.setItem("carrello", JSON.stringify([]));
+
+            //Salvo l'utente nel localStorage
             //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
             localStorage.setItem("utente", JSON.stringify(data.utente));
 
