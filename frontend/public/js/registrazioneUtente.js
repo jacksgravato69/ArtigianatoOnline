@@ -125,7 +125,7 @@ function registraUtente(tipoCliente) {
         headers: {
             'Content-Type': 'application/json'
         },
-        //Indico il corpo, che contiene i dati da inviare al server trasformati in formato HSON
+        //Indico il corpo, che contiene i dati da inviare al server trasformati in formato JSON
         body: JSON.stringify(data),
         credentials: 'include'
 

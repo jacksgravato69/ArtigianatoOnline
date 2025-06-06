@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const verificaToken = require('../../middleware/verificaToken');
+const verificaRuolo = require('../../middleware/verificaRuolo');
 const pool = require('../../db/db');
 const multer = require('multer');
 const path = require('path');
@@ -25,7 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 //'immagine' è il name del campo HTML dell'input per le foto
-router.post('/', verificaToken, upload.single('immagine'), async (req, res) => {
+router.post('/', verificaToken, verificaRuolo('artigiano'), upload.single('immagine'), async (req, res) => {
 
   try {
     

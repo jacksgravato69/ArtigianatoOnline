@@ -1,5 +1,20 @@
 //Metto un listener per il form che intercetta l'evento di submit, per poi richiamare la funzione aggiungiProdotto
 document.addEventListener('DOMContentLoaded', function() {
+
+    
+    //Facendo così blocco l'inserimento della 'e' e dei segni + e - nell'input field di tipo number
+    document.getElementById("prezzoProdottoInput").addEventListener("keydown", function(event) {
+    
+    if (event.key === 'e' || event.key === 'E' || event.key === '+' || event.key === '-') {
+    
+        //Prevengo il comportamento di default quando vengono premuti uno dei pulsanti elencati nell'if
+        event.preventDefault();
+    
+    }
+    
+    });
+    
+
     document.getElementById("aggiungiProdottoForm").addEventListener('submit', function(event) {
 
         //Prevenire il comportamento predefinito del forrm
@@ -7,20 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //Chiamo la funzione per cambiare il metodo di pagamento
         aggiungiProdotto();
-
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    //Facendo così blocco l'inserimento della 'e' e dei segni + e - nell'input field di tipo number
-    document.getElementById("prezzoProdottoInput").addEventListener("keydown", function(event) {
-
-    if (event.key === 'e' || event.key === 'E' || event.key === '+' || event.key === '-') {
-
-        //Prevengo il comportamento di default quando vengono premuti uno dei pulsanti elencati nell'if
-        event.preventDefault();
-
-    }
 
     });
 });

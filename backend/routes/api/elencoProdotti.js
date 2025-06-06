@@ -3,18 +3,42 @@ const router = express.Router();
 const pool = require('../../db/db');
 const verificaToken = require('../../middleware/verificaToken');
 
-router.get('/', verificaToken, async(req, res) => {
+router.post('/', verificaToken, async(req, res) => {
+
+    const tipoRicerca = req.body.tipoRicerca;
 
     try {
 
-        const elencoProdotti = await pool.query('SELECT * FROM \"ElencoProdotti\"');
+        switch(tipoRicerca) {
 
-        res.status(200).json({
+            case 'completa':
 
-            success: true,
-            prodotti: elencoProdotti.rows
+                const elencoProdotti = await pool.query('SELECT * FROM \"ElencoProdotti\"');
+        
+                res.status(200).json({
+        
+                    success: true,
+                    prodotti: elencoProdotti.rows
+        
+                })
 
-        })
+
+            case 'senzaFiltri':
+
+                const ricerca = req.body.ricerca;
+
+                const risultatoRicerca = await pool.query('SELECT * FROM \"ElencoProdotti\" WHERE \"NomeProdotto\" ILIKE $1', [`%${ricerca}%`]);
+
+                res.status(200).json({
+        
+                    success: true,
+                    prodotti: risultatoRicerca.rows
+        
+                })
+                
+
+        }
+
 
     } catch (err) {
 
