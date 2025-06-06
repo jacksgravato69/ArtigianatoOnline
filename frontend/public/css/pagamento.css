@@ -1,0 +1,107 @@
+body{
+    background-color:white;
+
+}
+
+header{
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header nav {
+    background-color: white;
+    color: #4a7c59;
+    padding: 5px;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    color:#4a7c59;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;           /* centro orizzontale */
+    padding: 2rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: left;            /* <-- fondamentale per allineare il testo a sinistra */
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.flex-row {
+  display: flex;
+  gap: 10px;
+}
+
+.flex-row > div {
+  flex: 1;
+}
+
+button {
+    text-align: center;
+    background-color: white;
+    color: #4a7c59;
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.pulsanteIndietro {
+    display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.paga{
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.1s;
+    margin-top: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.paga:hover{
+    background-color: #3a6b49;
+}
+
+
+.paga:active, .pulsanteIndietro:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

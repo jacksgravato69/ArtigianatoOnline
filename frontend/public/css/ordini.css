@@ -1,0 +1,119 @@
+body{
+    background-color:white;
+
+}
+
+header{
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header nav {
+    background-color: white;
+    color: #4a7c59;
+    padding: 5px;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    color:#4a7c59;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;           /* centro orizzontale */
+    padding: 2rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: left;            /* <-- fondamentale per allineare il testo a sinistra */
+}
+
+table {
+    width: 100%; /* La chiave per farla occupare tutta la larghezza del main */
+    border-collapse: collapse; /* Fondamentale per far sì che i bordi delle celle si uniscano */
+    margin-top: 20px; /* Spazio sopra la tabella */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Ombra per un effetto visivo migliore */
+    background-color: white; /* Sfondo bianco per la tabella */
+    border-radius: 8px; /* Bordi arrotondati per la tabella, se desiderato */
+    overflow: hidden; /* Importante se usi border-radius sulla tabella e vuoi che i bordi delle celle interne non escano */
+}
+
+/* Stili per le intestazioni della tabella */
+th {
+    background-color: #4a7c59; /* Sfondo leggermente grigio per le intestazioni */
+    text-align: left; /* Allinea il testo a sinistra */
+    padding: 12px 15px; /* Padding interno */
+    border-bottom: 2px solid #ddd; /* Bordo inferiore per separare l'intestazione dal corpo */
+    color: #eee;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-transform: uppercase;
+}
+
+/* Stili per le celle del corpo della tabella */
+td {
+    padding: 10px 15px; /* Padding interno */
+    border-bottom: 1px solid #eee; /* Bordo inferiore leggero per separare le righe */
+    color: #333;
+    font-size: 0.9em;
+}
+
+/* Stili per le righe pari (opzionale, per migliore leggibilità) */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Colore di sfondo alternato */
+}
+
+/* Hover sulle righe per interattività (opzionale) */
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Allineamento specifico per le colonne (se necessario) */
+table th:nth-child(4), /* Totale */
+table td:nth-child(4) {
+    text-align: right; /* Allinea a destra il totale */
+}
+
+table th:last-child, /* Stato */
+table td:last-child {
+    text-align: center; /* Centra lo stato */
+}
+
+button {
+    text-align: center;
+    background-color: white;
+    color: #4a7c59;
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.indietro {
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.1s;
+    margin-top: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.indietro:hover {
+    background-color: #3a6b49;
+}
+
+
+.indietro:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

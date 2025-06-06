@@ -6,39 +6,42 @@
         <title>Artigianato Online</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
-
+         <link href="../public/css/filtri.css" rel="stylesheet">
         <script src="../public/js/filtri.js"></script>
 
     </head>
 
     <body>
+        <header>
+            <nav>
+                <h2>Ricerca con filtri</h2>
+            </nav>
+        </header>
+        
+        <main>
 
-        <div id="titolo">
-            
-            <h1>Ricerca con filtri</h1>
+            <div id="campoRicercaInput">
 
-        </div>
+                <input type="text" placeholder="Cerca..." id="campoRicerca">
 
-        <div id="campoRicercaInput">
+            </div>
+            <br>
 
-            <input type="text" placeholder="Cerca..." id="campoRicerca">
+            <div id="filtri">
 
-        </div>
+                <input type="checkbox" id="prezzoMaxCheck" name="prezzoMax" value="prezzoMax">
+                <label for="prezzoMax">Prezzo massimo:</label>
+                <input name="prezzo" type="number" id="prezzoProdottoInput" step="0.01"> 
+                <br><br>
 
-        <div id="filtri">
+                <input type="checkbox" id="produttoreCheck" name="produttore" value="produttore">
+                <label for="produttore">Produttore:</label>
 
-            <input type="checkbox" id="prezzoMaxCheck" name="prezzoMax" value="prezzoMax">
-            <label for="prezzoMax">Prezzo massimo:</label>
-            <input name="prezzo" type="number" id="prezzoProdottoInput" step="0.01"> <br>
-
-            <input type="checkbox" id="produttoreCheck" name="produttore" value="produttore">
-            <label for="produttore">Produttore:</label>
-
-            <select name="produttore" id="produttore" class="prova"></select> <br>
-
-            <input type="checkbox" id="tipologiaCheck" name="tipologia" value="tipologia">
-            <label for="tipologia">Tipologia:</label>
-            <select name="tipologia" id="tipologia">
+                <select name="produttore" id="produttore" class="prova"></select> 
+                <br><br>
+                <input type="checkbox" id="tipologiaCheck" name="tipologia" value="tipologia">
+                <label for="tipologia">Tipologia:</label>
+                <select class="tipologiaP"name="tipologia" id="tipologia">
 
                     <option>Gioielli artigianali</option>
                     <option>Ceramica e porcellana</option>
@@ -50,17 +53,14 @@
                     <option>Strumenti musicali</option>
                     <option>Oggetti in metallo</option>
                     <option>Altro</option>
-
+                
                 </select>
+                <br><br>
+            </div>
+            <button class="bottoneRicerca"id="bottoneRicerca" onclick="effettuaRicerca()">Ricerca</button>
 
-        </div>
-
-        <div id="bottoneRicercaDiv">
-
-            <button id="bottoneRicerca" onclick="effettuaRicerca()">Ricerca</button>
-
-        </div>
-
+        
+        </main>
     </body>
 
 </html>

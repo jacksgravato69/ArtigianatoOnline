@@ -8,65 +8,72 @@
 
         <title>Aggiunta Prodotto</title>
 
+        <link href="../public/css/styleAggP.css" rel="stylesheet">
+
         <script src="/public/js/aggiuntaProdotto.js"></script>
 
     </head>
 
     <body>
+        <header>
+            <nav>
+                <h2>Aggiungi Prodotto</h2>
+            </nav>
+        </header>
 
-        <h1>Aggiungi un Prodotto</h1>
+        <main>
+            <form id="aggiungiProdottoForm" enctype="multipart/form-data">
 
-        <form id="aggiungiProdottoForm" enctype="multipart/form-data">
+                <p>
+                    <strong>Nome prodotto:</strong>
+                    <span id="nomeProdotto"></span>
+                    <input name = "nomeProdotto" type="text" id="nomeProdottoInput" required>
+                </p>
 
-            <p>
-                <strong>Nome prodotto:</strong>
-                <span id="nomeProdotto"></span>
-                <input name = "nomeProdotto" type="text" id="nomeProdottoInput" required>
-            </p>
+                <p>
+                    <strong>Immagine:</strong>
+                    <input name="nomeProdotto" type="file" id="immagineProdottoInput" name="immagine" accept="image/*" required>
+                </p>
 
-            <p>
-                <strong>Immagine:</strong>
-                <input name="nomeProdotto" type="file" id="immagineProdottoInput" name="immagine" accept="image/*" required>
-            </p>
+                <p class="descrizione">
+                    <strong>Descrizione:</strong>
+                    <textarea name="descrizioneProdotto" id="descrizioneProdottoInput" rows="4" cols="50" required></textarea>
+                </p>
 
-            <p>
-                <strong>Descrizione:</strong>
-                <textarea name="descrizioneProdotto" id="descrizioneProdottoInput" rows="4" cols="50" required></textarea>
-            </p>
+                <p>
+                    <strong>Tipologia:</strong>
+                    <!-- Menu a tendina per tipologia prodotto -->
+                    <select name="tipologia" id="tipologiaProdotto" required>
 
-            <p>
-                <strong>Tipologia:</strong>
-                 <!-- Menu a tendina per tipologia prodotto -->
-                <select name="tipologia" id="tipologiaProdotto" required>
+                        <option>Gioielli artigianali</option>
+                        <option>Ceramica e porcellana</option>
+                        <option>Tessili</option>
+                        <option>Legno lavorato</option>
+                        <option>Carta e cartoleria</option>
+                        <option>Prodotti naturali</option>
+                        <option>Arte e decorazioni</option>
+                        <option>Strumenti musicali</option>
+                        <option>Oggetti in metallo</option>
+                        <option>Altro</option>
 
-                    <option>Gioielli artigianali</option>
-                    <option>Ceramica e porcellana</option>
-                    <option>Tessili</option>
-                    <option>Legno lavorato</option>
-                    <option>Carta e cartoleria</option>
-                    <option>Prodotti naturali</option>
-                    <option>Arte e decorazioni</option>
-                    <option>Strumenti musicali</option>
-                    <option>Oggetti in metallo</option>
-                    <option>Altro</option>
+                    </select> <br><br>
+                </p>
 
-                </select> <br><br>
-            </p>
+                <p>
+                    <strong>Quantità:</strong>
+                    <button class="butt-Quantita" onclick="modificaQuantita('-')" type="button">-</button>
+                    <input name="quantità" id="quantitaInput" type="number" min="1" value="1" class="inputQ" readonly>
+                    <button class="butt-Quantita" onclick="modificaQuantita('+')" type="button">+</button>
+                </p>
+                <p>
+                    <strong>Prezzo:</strong>
+                    <input name="prezzo" type="number" id="prezzoProdottoInput" step="0.01" required>
+                </p>
 
-            <p>
-                <strong>Quantità:</strong>
-                <button class="butt-Quantita" onclick="modificaQuantita('-')" type="button">-</button>
-                <input name="quantità" id="quantitaInput" type="number" min="1" value="1" class="inputQ" readonly>
-                <button class="butt-Quantita" onclick="modificaQuantita('+')" type="button">+</button>
-            </p>
-            <p>
-                <strong>Prezzo:</strong>
-                <input name="prezzo" type="number" id="prezzoProdottoInput" step="0.01" required>
-            </p>
-
-            <button type="submit">Aggiungi prodotto</button><br><br>
-
-        </form>
+                <button class="aggP" type="submit">Aggiungi prodotto</button><br><br>
+                <button class="indietro">Indietro</button><br><br>
+            </form>
+        </main>
 
 
     </body>

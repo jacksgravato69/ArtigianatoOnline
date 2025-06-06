@@ -1,0 +1,90 @@
+body{
+    background-color:white;
+
+}
+
+header{
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header nav {
+    background-color: white;
+    color: #4a7c59;
+    padding: 5px;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    color:#4a7c59;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;           /* centro orizzontale */
+    padding: 2rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: left;           /* <-- fondamentale per allineare il testo a sinistra */
+  display: flex;
+  position: relative;
+
+}
+
+.cards-container {
+  width: 65%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  color: #4a7c59;
+}
+
+.card button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #4a7c59;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #3a6b49;
+}
+
+/* Sidebar destra */
+#sidebar {
+  width: 35%;
+  background-color: #fff;
+  border-left: 1px solid #ccc;
+  padding: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+}
+
+#chiudiSidebar {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  align-self: flex-end;
+  cursor: pointer;
+  background-color: #3a6b49;
+}
