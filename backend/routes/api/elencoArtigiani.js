@@ -4,7 +4,7 @@ const verificaToken = require('../../middleware/verificaToken');
 const verificaRuolo = require('../../middleware/verificaRuolo');
 const pool = require('../../db/db');
 
-router.get('/', async(req, res) => {
+router.get('/', verificaToken, verificaRuolo('cliente'), async(req, res) => {
 
     try {
 

@@ -145,6 +145,10 @@ function registraUtente(tipoCliente) {
             //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
             localStorage.setItem("utente", JSON.stringify(data.utente));
 
+            //Creo una variabile che determina il prezzo del carrello
+            let prezzoCarrello = 0;
+            localStorage.setItem("prezzoCarrello", prezzoCarrello);
+
             //Reindirizzo alla pagina di home del cliente
             window.location.replace('../../views/homeC.html');
 
@@ -156,7 +160,7 @@ function registraUtente(tipoCliente) {
             //Salvo l'utente nel localStorage
             //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
             localStorage.setItem("utente", JSON.stringify(data.utente));
-
+            
             //Reindirizzo alla pagina di home dell'artigiano
             window.location.replace('../../views/homeA.html');
 

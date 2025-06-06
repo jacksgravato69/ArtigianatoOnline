@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
 
         //Definisco in una variabilie l'oggetto che contiene tutte le opzioni
-        const selector = document.getElementById("produttore");
+        const selector = document.getElementById("produttoreSelect");
 
         if(data.success) {
 
@@ -59,6 +59,13 @@ function effettuaRicerca() {
     let isPrezzoChecked = document.getElementById("prezzoMaxCheck").checked;
     let isProduttoreChecked = document.getElementById("produttoreCheck").checked;
     let isTipologiaChecked = document.getElementById("tipologiaCheck").checked;
+
+    if(isRicercaPiena === '' && isPrezzoChecked === false && isProduttoreChecked === false && isTipologiaChecked === false) {
+
+        alert('Selezionare dei filtri oppure tornare indietro');
+        return;
+
+    }
     
     
     if(isRicercaPiena !== '') {
@@ -82,9 +89,52 @@ function effettuaRicerca() {
 
     if(isProduttoreChecked === true) {
 
-        //TODO: Controllare
-        produttore = document.getElementById("produttoreCheck").options[document.getElementById("produttoreCheck").selectedIndex].text
+        produttore = document.getElementById("produttoreSelect").options[document.getElementById("produttoreSelect").selectedIndex].text;
 
     }
+
+    if(isTipologiaChecked === true) {
+
+        tipologia = document.getElementById("tipologia").options[document.getElementById("tipologia").selectedIndex].text;
+
+    }
+
+    let data = {
+
+        tipoRicerca: 'conFiltri',
+        campoRicerca: ricerca,
+        prezzoMax: prezzoMax,
+        produttore: produttore,
+        tipologia: tipologia
+
+    }
+
+    fetch('http://localhost:3000/api/elencoProdotti', {
+
+        method: 'POST',
+        headers: {
+
+            'Content-Type': 'application/json'
+
+        },
+        body: JSON.stringify(data),
+        credentials: 'include'
+
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        if(data.success) {
+
+            localStorage.setItem("filtri", JSON.stringify(data));
+            window.location.replace('../../views/homeC.html');
+
+        } else {
+
+            alert(data.message)
+
+        }
+
+    })
     
 }

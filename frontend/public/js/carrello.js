@@ -2,6 +2,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     caricaCarrello();
 
+    if(document.getElementById("count").textContent == 0) {
+
+        document.getElementById("riassuntoOrdine").innerHTML = '';
+
+    }
+
 });
 
 //Funzione per rimuovere oggetti dal carrello
@@ -12,7 +18,20 @@ document.addEventListener('click', function(event) {
         //Prendo la lista degli oggetti aggiunti al carrello fino a quel momento
         const carrelloAttuale = JSON.parse(localStorage.getItem("carrello"));
 
+        //Prendo il prezzo attuale del carrello
+        let prezzoCarrello = parseFloat(localStorage.getItem("prezzoCarrello"));
+
         const idProdotto = event.target.dataset.id;
+        const prezzoProdotto = event.target.dataset.prezzo;
+
+        prezzoCarrello -= parseFloat(prezzoProdotto);
+
+        localStorage.setItem("prezzoCarrello", prezzoCarrello);
+
+        let quantitaAggiornate = JSON.parse(localStorage.getItem("quantitaProdotti")) || {};
+        // Se non esiste ancora, la inizializzo a 0
+        quantitaAggiornate[idProdotto] = (quantitaAggiornate[idProdotto] || 0) + 1;
+        localStorage.setItem("quantitaProdotti", JSON.stringify(quantitaAggiornate));
 
         for(i = 0; i < carrelloAttuale.length; i++) {
 
@@ -23,6 +42,12 @@ document.addEventListener('click', function(event) {
                 localStorage.setItem("carrello", JSON.stringify(carrelloAttuale));
 
                 caricaCarrello();
+
+                if(document.getElementById("count").textContent == 0) {
+
+                    document.getElementById("riassuntoOrdine").innerHTML = '';
+
+                }
 
                 return;
 
@@ -82,6 +107,7 @@ function caricaCarrello() {
         bottoneRimuovi.className = 'buttRim';
         bottoneRimuovi.textContent = 'Rimuovi';
         bottoneRimuovi.setAttribute('data-id', prodotto["ID"]);
+        bottoneRimuovi.setAttribute('data-prezzo', prodotto["prezzo"]);
 
         //Creo l'oggetto break per andare a capo
         const br = document.createElement('br');

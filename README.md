@@ -23,3 +23,7 @@ Risposta di Sicurezza: Giallo
 Email: napoli@gmail.com
 Password: napoli
 Risposta di Sicurezza: Napoli
+
+
+
+docker exec -it artigianatoonline-db-1 psql -U jackchiara -d artigianatoonline

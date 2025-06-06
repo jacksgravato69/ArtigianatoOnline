@@ -1,39 +1,47 @@
 //EventListener che carica i prodotti dal DB quando viene caricato il DOM
 document.addEventListener("DOMContentLoaded", function() {
 
-    //Creo un oggetto dove è contenuto che tipo di ricerca fare nel server
-    let data = {
+    if(!localStorage.getItem("filtri")) {
 
-        tipoRicerca: 'completa'
+        //Creo un oggetto dove è contenuto che tipo di ricerca fare nel server
+        let data = {
+    
+            tipoRicerca: 'completa'
+    
+        }
+    
+        fetch('http://localhost:3000/api/elencoProdotti', {
+    
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: 'include'
+    
+        })
+        .then(res => res.json())
+        .then(data => {
+    
+            console.log(data.prodotti[0]["Email"]);
+    
+            if(data.success) {
+    
+                mostraProdotti(data);
+                
+            } else {
+                
+                alert(data.message);
+                
+            }
+            
+        })
+
+    } else {
+
+        mostraProdotti(JSON.parse(localStorage.getItem("filtri")));
 
     }
-
-    fetch('http://localhost:3000/api/elencoProdotti', {
-
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-        credentials: 'include'
-
-    })
-    .then(res => res.json())
-    .then(data => {
-
-        console.log(data.prodotti[0]["Email"]);
-
-        if(data.success) {
-
-            mostraProdotti(data);
-            
-        } else {
-            
-            alert(data.message);
-            
-        }
-        
-    })
     
     //Funzione per la ricerca dei prodotti, utilizzata la tecnica del debounce
     
@@ -46,6 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
         //Aggiungo un listener ad ogni tipo di input nel campo di ricerca
         document.getElementById("campoRicerca").addEventListener("input", function(event) {
             
+            localStorage.setItem("filtri", null);
+
             //Salvo in una variabile quello che scrive l'utente
             const ricerca = event.target.value;
             
@@ -110,7 +120,9 @@ document.addEventListener('click', function(event) {
     //i pulsanti delle card, così da far funzionare questa funzione solo per quei pulsanti
     if(event.target.classList.contains('aggiungi')) {
         
-        
+        //Recupero il prezzo attuale del carrello
+        let prezzoCarrello = parseFloat(localStorage.getItem("prezzoCarrello"));
+
         //Recupero dal localStorage la lista "carrello" dove salverò tutti gli elementi che voglio aggiungere al carrello
         let carrello = JSON.parse(localStorage.getItem("carrello"))
         
@@ -119,20 +131,42 @@ document.addEventListener('click', function(event) {
         const nomeProdotto = event.target.dataset.nome;
         const prezzoProdotto = event.target.dataset.prezzo;
         const immagineProdotto = event.target.dataset.immagine;
+        const emailArtigiano = event.target.dataset.email;
+
+        //TODO:CONTROLLARE SE VA BENE
+        const card = event.target.closest('.card');
+        const quantitàElem = card.querySelector('.quantitàRimanente');
+        let quantitàNumero = parseInt(quantitàElem.textContent);
+        if (quantitàNumero <= 0) {
+
+            alert("Prodotto esaurito!");
+            return;
+
+        }
+        quantitàNumero--;
+        quantitàElem.textContent = quantitàNumero;
+        //Recupera o creo l'oggetto delle quantità
+        let quantitaAggiornate = JSON.parse(localStorage.getItem("quantitaProdotti")) || {};
+        quantitaAggiornate[idProdotto] = quantitàNumero;
+        localStorage.setItem("quantitaProdotti", JSON.stringify(quantitaAggiornate));
         
         carrello.push({
             
             ID: idProdotto,
             nome: nomeProdotto,
             prezzo: prezzoProdotto,
-            immagine: immagineProdotto
+            immagine: immagineProdotto,
+            email: emailArtigiano
             
         })
         
         console.log("carrello" + carrello);
         
+        prezzoCarrello += parseFloat(prezzoProdotto);
+
+        localStorage.setItem("prezzoCarrello", prezzoCarrello);
         localStorage.setItem("carrello", JSON.stringify(carrello));
-        
+
     }
     
 })
@@ -181,6 +215,15 @@ function mostraProdotti(data) {
         const descrizioneProdotto = document.createElement('p');
         descrizioneProdotto.textContent = prodotto["Descrizione"];
         card.appendChild(descrizioneProdotto);
+
+        const quantitàRimanente = document.createElement('p');
+        quantitàRimanente.textContent = prodotto["Quantità"];
+        let quantitaAggiornate = JSON.parse(localStorage.getItem("quantitaProdotti")) || {};
+        let quantitaDaMostrare = quantitaAggiornate[prodotto["ID"]] !== undefined ? quantitaAggiornate[prodotto["ID"]] : prodotto["Quantità"];
+        quantitàRimanente.textContent = quantitaDaMostrare;
+        quantitàRimanente.className = 'quantitàRimanente';
+        quantitàRimanente.setAttribute('data-id', prodotto["ID"]);
+        card.appendChild(quantitàRimanente);
     
         //Creo l'oggetto button che rappresenta il pulsante per aggiungere l'elemento al carrello e lo aggiungo al div che rappresenta la card
         const bottoneAggiungi = document.createElement('button');
@@ -191,9 +234,51 @@ function mostraProdotti(data) {
         bottoneAggiungi.setAttribute('data-nome', prodotto["NomeProdotto"]);
         bottoneAggiungi.setAttribute('data-prezzo', prodotto["Prezzo"]);
         bottoneAggiungi.setAttribute('data-immagine', 'http://localhost:3000/immaginiProdotti/' + prodotto["Immagine"]);
+        bottoneAggiungi.setAttribute('data-email', prodotto["Email"]);
         card.appendChild(bottoneAggiungi);
     
         row.appendChild(card);
     
     });
 }
+
+//Mostra comunque la pagina nuova senza prendere quella dalla cache, così quando rimuovo un elemento dal carrello torna disponibile nella pagian home
+window.addEventListener('pageshow', function(event) {
+
+    if(!localStorage.getItem("filtri")) {
+
+        let data = { 
+
+            tipoRicerca: 'completa' 
+
+        };
+
+        fetch('http://localhost:3000/api/elencoProdotti', {
+
+            method: 'POST',
+            headers: { 
+                
+                'Content-Type': 'application/json'
+            
+            },
+            body: JSON.stringify(data),
+            credentials: 'include'
+
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            if(data.success) {
+
+                mostraProdotti(data);
+
+            }
+                
+        });
+
+    } else {
+
+        mostraProdotti(JSON.parse(localStorage.getItem("filtri")));
+        
+    }
+});

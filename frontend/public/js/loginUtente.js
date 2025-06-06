@@ -40,6 +40,10 @@ function loginUtente(event) {
                 //Creo una lista che conterrà i prodotti aggiunti al carrello
                 localStorage.setItem("carrello", JSON.stringify([]));
 
+                //Creo una variabile che determina il prezzo del carrello
+                let prezzoCarrello = 0;
+                localStorage.setItem("prezzoCarrello", prezzoCarrello);
+
                 if(data.utente.ruolo === 'artigiano') {
 
                     //Reindirizzo alla pagina di home dell'artigiano

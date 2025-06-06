@@ -12,6 +12,7 @@ const modificaAPI = require('./routes/api/modifica.js');
 const creaProdottoAPI = require('./routes/api/creaProdotto.js');
 const elencoProdottiAPI = require('./routes/api/elencoProdotti.js');
 const elencoArtigianiAPI = require('./routes/api/elencoArtigiani.js');
+const confermaOrdineAPI = require('./routes/api/confermaOrdine.js')
 
 //Dico di leggere tutti i file statici dalla cartella public; tutti i file che si trovano in questa cartella sono accessibili come se si trovssero nella root
 //app.use(express.static(__dirname + "/public"));
@@ -64,6 +65,9 @@ app.use('/api/elencoProdotti', elencoProdottiAPI);
 
 //Indica che tutte le richieste che iniziano con /api/elencoArtigiani verranno gestite da quello che c’è nel file elencoArtigiani.js
 app.use('/api/elencoArtigiani', elencoArtigianiAPI);
+
+//Indica che tutte le richieste che iniziano con /api/confermaOrdine verranno gestite da quello che c’è nel file confermaOrdine.js
+app.use('/api/confermaOrdine', confermaOrdineAPI);
 
 //Per immagini
 app.use(express.static('public', {

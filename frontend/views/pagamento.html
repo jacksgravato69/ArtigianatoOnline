@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prodotto</title>
     <link href="../public/css/pagamento.css" rel="stylesheet">
+
+    <script src="../public/js/pagamento.js"></script>
 </head>
 <body>
     <header>
@@ -16,29 +18,34 @@
     <main>
         <div class="container">
             <div class="ordine-info">
-                <p><strong>ID Ordine:</strong> ORD12345</p>
-                <p><strong>Totale da pagare:</strong> €99.90</p>
+                <p><strong>Totale da pagare:</strong> €<span id="costoTotale">99.90</span></p>
             </div>
             
             <form id="formPagamento">
       <h2>Dettagli di pagamento</h2>
 
-      <label>Nome sulla carta</label>
-      <input type="text" required>
+      <label>Nome</label>
+      <input type="text" id="nome" required>
+
+      <label>Cognome</label>
+      <input type="text" id="cognome" required>
+
+      <label>Indirizzo</label>
+      <input type="text" id="indirizzo" required>
         <br>
-      <label>Numero di carta</label>
-      <input type="text" placeholder="1234 5678 9012 3456" required maxlength="19">
 
       <div class="flex-row">
         <div>
-          <label>Scadenza</label>
-          <input type="text" placeholder="MM/AA" required>
+          <label>Città</label>
+          <input type="text" id="citta" required>
         </div>
         <div>
-          <label>CVV</label>
-          <input type="text" placeholder="123" required maxlength="3">
+          <label>Provincia</label>
+          <input type="text" id="provincia">
         </div>
       </div>
+      <label>CAP</label>
+      <input type="number" id="CAP" required maxlength="5">
       <br>
       <button class="paga" type="submit">Paga ora</button>
     </form>
