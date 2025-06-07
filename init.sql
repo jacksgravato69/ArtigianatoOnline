@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5 (Debian 17.5-1.pgdg120+1)
 -- Dumped by pg_dump version 17.0
 
--- Started on 2025-06-07 01:21:36 CEST
+-- Started on 2025-06-07 16:52:57 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -277,19 +277,18 @@ Paolo@gmail.com	Paolo	Rosberg	Via dalle Balls	$2b$10$nPHXtAPJ1EevibCSbSB7PuVK9Kg
 --
 
 COPY public."ElencoProdotti" ("ID", "Email", "NomeProdotto", "Immagine", "Descrizione", "Tipologia", "Quantità", "Prezzo") FROM stdin;
-2	napoli@gmail.com	Prodotto Prova	1749051921025-X.png	questo è il primo prodotto	Arte e decorazioni	1	43
-7	napoli@gmail.com	Prodotto 5	1749119855026-utente.png	Utente	Oggetti in metallo	4	76
-8	napoli@gmail.com	Prodotto 6	1749119958052-carrello1.png	altro carrello	Tessili	6	34
-9	napoli@gmail.com	Prodotto 7	1749120057754-aggiungiP.png	Bo	Arte e decorazioni	4	43
-10	napoli@gmail.com	Prodotto 8	1749120199784-utente.png	krewfn 	Prodotti naturali	4	342
 11	napoli@gmail.com	Mo funziona sto prodotto	1749120265012-ordini.png	fidate	Oggetti in metallo	3	43
-12	napoli@gmail.com	Basta	1749120295075-ordini.png	23d2d	Gioielli artigianali	4	32
-13	napoli@gmail.com	Prodotto nero	1749162208457-schermonero.png	schermo nero	Altro	4	69
-15	napoli@gmail.com	Porro	1749196521303-pack.png	un bel porro	Legno lavorato	3	65
-3	napoli@gmail.com	Prodotto 2	1749118933175-O.png	cewcde	Altro	3	32
-4	napoli@gmail.com	Prodotto 3	1749119453324-icon.png	pippo	Carta e cartoleria	2	67
-5	napoli@gmail.com	Prodotto 4	1749119619126-pack.png	Er Pack	Legno lavorato	22	24
-6	napoli@gmail.com	Prodotto bo	1749119813573-carrello.png	Carrello	Tessili	2	100
+8	napoli@gmail.com	Prodotto 6	1749119958052-carrello1.png	altro carrello	Tessili	4	34
+9	napoli@gmail.com	Prodotto 7	1749120057754-aggiungiP.png	Bo	Arte e decorazioni	2	43
+10	napoli@gmail.com	Prodotto 8	1749120199784-utente.png	krewfn 	Prodotti naturali	1	342
+12	napoli@gmail.com	Basta	1749120295075-ordini.png	23d2d	Gioielli artigianali	2	32
+5	napoli@gmail.com	Prodotto 4	1749119619126-pack.png	Er Pack	Legno lavorato	19	24
+13	napoli@gmail.com	Prodotto nero	1749162208457-schermonero.png	schermo nero	Altro	2	69
+3	napoli@gmail.com	Prodotto 2	1749118933175-O.png	cewcde	Altro	2	32
+7	napoli@gmail.com	Prodotto 5	1749119855026-utente.png	Utente	Oggetti in metallo	2	76
+15	napoli@gmail.com	Porro	1749196521303-pack.png	un bel porro	Legno lavorato	2	65
+4	napoli@gmail.com	Prodotto 3	1749119453324-icon.png	pippo	Carta e cartoleria	2	63
+6	napoli@gmail.com	Prodotto bo	1749119813573-carrello.png	Carrello pazzo matto	Tessili	2	100
 \.
 
 
@@ -317,7 +316,7 @@ Paolo@gmail.com	Paolo	$2b$10$nB/tUAJR5/ET.0KEwjSFj.OT2q7YWLV9rvTU2UxgDp9JNuy14mw
 --
 
 COPY public."Ordini" ("ID", "EmailCliente", "Data") FROM stdin;
-7	Paolo@gmail.com	2025-06-06 23:14:44.685648
+12	Paolo@gmail.com	2025-06-07 11:01:44.146147
 \.
 
 
@@ -328,8 +327,9 @@ COPY public."Ordini" ("ID", "EmailCliente", "Data") FROM stdin;
 --
 
 COPY public."OrdiniProdotti" ("ID", "IDOrdine", "IDProdotto", "Quantità", "PrezzoTotale", "EmailArtigiano", "NomeCliente", "CognomeCliente", "Indirizzo", "Provincia") FROM stdin;
-7	7	5	3	242424	napoli@gmail.com	Giacomo	Grieco	Via Bolle, 53	Termini
-8	7	6	2	100100	napoli@gmail.com	Giacomo	Grieco	Via Bolle, 53	Termini
+18	12	3	1	32	napoli@gmail.com	dwdwefw	nyrtbdwdfwqf	dwqdqw	qdq3dq
+19	12	7	1	76	napoli@gmail.com	dwdwefw	nyrtbdwdfwqf	dwqdqw	qdq3dq
+20	12	15	1	65	napoli@gmail.com	dwdwefw	nyrtbdwdfwqf	dwqdqw	qdq3dq
 \.
 
 
@@ -348,7 +348,7 @@ SELECT pg_catalog.setval('public."ElencoProdotti_ID_seq"', 15, true);
 -- Name: OrdiniProdotti_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: jackchiara
 --
 
-SELECT pg_catalog.setval('public."OrdiniProdotti_ID_seq"', 8, true);
+SELECT pg_catalog.setval('public."OrdiniProdotti_ID_seq"', 20, true);
 
 
 --
@@ -357,7 +357,7 @@ SELECT pg_catalog.setval('public."OrdiniProdotti_ID_seq"', 8, true);
 -- Name: Ordini_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: jackchiara
 --
 
-SELECT pg_catalog.setval('public."Ordini_ID_seq"', 7, true);
+SELECT pg_catalog.setval('public."Ordini_ID_seq"', 12, true);
 
 
 --
@@ -423,7 +423,7 @@ ALTER TABLE ONLY public."Ordini"
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-06-07 01:21:36 CEST
+-- Completed on 2025-06-07 16:52:57 CEST
 
 --
 -- PostgreSQL database dump complete
