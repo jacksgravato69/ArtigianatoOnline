@@ -1,4 +1,5 @@
 import { verificaToken } from './verificaTokenFront.js';
+import { indietro } from './indietro.js';
 
 //EventListener che carica i prodotti dal DB quando viene caricato il DOM
 document.addEventListener("DOMContentLoaded", function() { 
@@ -72,3 +73,11 @@ document.addEventListener('submit', function(event) {
     }
 
 })
+
+function vaiIndietro() {
+
+    indietro();
+
+}
+
+window.vaiIndietro = vaiIndietro;

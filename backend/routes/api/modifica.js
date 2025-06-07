@@ -175,7 +175,7 @@ router.post('/', verificaToken, async(req, res) => {
                     //Se non esiste, restituisco un success a false che indica un errore
                     return res.status(400).json({ 
 
-                        success: false
+                        success: false,
 
                     });
 
@@ -190,10 +190,13 @@ router.post('/', verificaToken, async(req, res) => {
                     //Aggiorno la password dell'utente
                     await pool.query('UPDATE \"ElencoUtenti\" SET \"Password\" = $1 WHERE \"Email\" = $2', [hashedPassword, req.utente.email])
 
+                    const utenteAggiornato = await pool.query('SELECT \"Email\", \"Username\", \"TipoUtente\" FROM \"ElencoUtenti\" WHERE \"Email\" = $1',[req.utente.email]);
+
                     res.json({
 
                         success: true,
-                        message: "Password modifica con successo"
+                        message: "Password modifica con successo",
+                        utente: utenteAggiornato.rows[0]
 
                     })
 

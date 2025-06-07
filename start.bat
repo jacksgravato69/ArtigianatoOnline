@@ -1,0 +1,6 @@
+@echo off
+echo Arresto dei container esistenti...
+docker compose down
+echo Avvio della web app...
+docker compose up --build
+pause

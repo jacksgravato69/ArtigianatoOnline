@@ -1,4 +1,5 @@
 import { verificaToken } from './verificaTokenFront.js';
+import { indietro } from './indietro.js';
 
 
 //Metto un listener per il form che intercetta l'evento di submit, per poi richiamare la funzione aggiungiProdotto
@@ -104,5 +105,11 @@ function modificaQuantita(segno) {
 
 }
 
+function vaiIndietro() {
 
+    indietro();
+
+}
+
+window.vaiIndietro = vaiIndietro;
 window.modificaQuantita = modificaQuantita;

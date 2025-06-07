@@ -1,4 +1,6 @@
 import { verificaToken } from './verificaTokenFront.js';
+import { indietro } from './indietro.js';
+
 
 console.log(localStorage.getItem("utente"));
 
@@ -193,5 +195,12 @@ function modifica(tipoModifica) {
 
 }
 
+function vaiIndietro() {
+
+    indietro();
+
+}
+
+window.vaiIndietro = vaiIndietro;
 window.modificaCampo = modificaCampo;
 window.modifica = modifica;

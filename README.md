@@ -1,17 +1,32 @@
 # ArtigianatoOnline
 
-# INSERIRE NUOVO DATABASE
+# COME AVVIARE LA WEB APP
 
-1. **Spegni i container** (da Terminale nella cartella dove è presente tutto il progetto)
-    docker-compose down
+# WINDOWS
 
-2. **Rimuovi il vecchio DB** (sempre da Terminale nella cartella dove è presente tutto il progetto)
-    rmdir /s /q db-docker (Windows)
-    rm -rf db-docker (macOS)
+*Se è la prima volta che si avvia*
+ 1. Premere 2 volte sul file 'start.bat'
+ 2. Cercare sul proprio browser 'http://localhost:8080/'
 
-3. **Riavvia i container**
-    docker compose up --build
+*Se si desidera restartare ricaricando il DB*
+ 1. Premere 2 volte sul file 'restart.bat'
+ 2. Cercare sul proprio browser 'http://localhost:8080/'
 
+
+# MACOS/LINUX
+
+*Se è la prima volta che si avvia*
+ 1. Dirigersi nella cartella del progetto da terminale
+ 2. Inserire il comando 'chmod +x start.sh' per dare i permessi di esecuzione
+ 3. Infine avviare lo script inserendo nel terminale sempre nella cartella del progetto il comando './start.sh'
+
+*Se si desidera restartare ricaricando il DB*
+ 1. Dirigersi nella cartella del progetto da terminale
+ 2. Inserire il comando 'chmod +x reset.sh' per dare i permessi di esecuzione
+ 3. Infine avviare lo script inserendo nel terminale sempre nella cartella del progetto il comando './reset.sh'
+
+
+--------------------------------------------------------------------------------------------------------------------------------
 
 # UTENTI DI PROVA
 **Cliente**
@@ -24,6 +39,11 @@ Email: napoli@gmail.com
 Password: napoli
 Risposta di Sicurezza: Napoli
 
+**Cliente**
+Email: giorgi63@gmail.com
+Password: giorgione35
+Risposta di Sicurezza: Varese
 
+# ACCEDERE ALLA CONSOLE DEL DB
 
 docker exec -it artigianatoonline-db-1 psql -U jackchiara -d artigianatoonline

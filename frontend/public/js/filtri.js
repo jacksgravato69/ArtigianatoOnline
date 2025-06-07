@@ -1,4 +1,5 @@
 import { verificaToken } from './verificaTokenFront.js';
+import { indietro } from './indietro.js';
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -143,4 +144,11 @@ function effettuaRicerca() {
     
 }
 
+function vaiIndietro() {
+
+    indietro();
+
+}
+
+window.vaiIndietro = vaiIndietro;
 window.effettuaRicerca = effettuaRicerca;

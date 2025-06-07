@@ -1,4 +1,5 @@
 import { verificaToken } from './verificaTokenFront.js';
+import { indietro } from './indietro.js';
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -139,3 +140,11 @@ document.addEventListener('click', function(event) {
     }
 
 })
+
+function vaiIndietro() {
+
+    indietro();
+
+}
+
+window.vaiIndietro = vaiIndietro;

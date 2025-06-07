@@ -1,4 +1,5 @@
 import { verificaToken } from './verificaTokenFront.js';
+import { indietro } from './indietro.js';
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -138,3 +139,11 @@ function caricaCarrello() {
     console.log(JSON.parse(localStorage.getItem("carrello")))
 
 }
+
+function vaiIndietro() {
+
+    indietro();
+
+}
+
+window.vaiIndietro = vaiIndietro;
