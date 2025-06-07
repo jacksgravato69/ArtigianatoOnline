@@ -25,24 +25,24 @@
             <form id="modificaProdottoForm" class="formModifica" enctype="multipart/form-data">
 
                 <p>
-                    <strong>Nome prodotto:</strong>
+                    <strong>Nome prodotto:</strong><br>
                     <span id="nomeProdotto"></span>
                     <input name = "nomeProdotto" type="text" id="nomeProdottoInput" required>
                 </p>
 
                 <p class="descrizione">
-                    <strong>Descrizione:</strong>
+                    <strong>Descrizione:</strong><br>
                     <textarea name="descrizioneProdotto" id="descrizioneProdottoInput" rows="4" cols="50" required></textarea>
                 </p>
 
                 <p>
-                    <strong>Quantità:</strong>
+                    <strong>Quantità:</strong><br>
                     <button class="butt-Quantita" onclick="modificaQuantita('-')" type="button">-</button>
                     <input name="quantità" id="quantitaInput" type="number" min="1" value="1" class="inputQ" readonly>
                     <button class="butt-Quantita" onclick="modificaQuantita('+')" type="button">+</button>
                 </p>
                 <p>
-                    <strong>Prezzo:</strong>
+                    <strong>Prezzo:</strong><br>
                     <input name="prezzo" type="number" id="prezzoProdottoInput" step="0.01" required>
                 </p>
 
