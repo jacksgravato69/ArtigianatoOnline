@@ -1,5 +1,9 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 //EventListener che carica i prodotti dal DB quando viene caricato il DOM
 document.addEventListener("DOMContentLoaded", function() {
+
+    verificaToken();
 
         //Creo un oggetto dove è contenuto che tipo di ricerca fare nel server
         let data = {

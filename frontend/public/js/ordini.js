@@ -1,4 +1,8 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 document.addEventListener("DOMContentLoaded", function() {
+
+    verificaToken();
 
     fetch('http://localhost:3000/api/elencoOrdini', {
     

@@ -1,6 +1,10 @@
+import { verificaToken } from './verificaTokenFront.js';
+
+
 //Metto un listener per il form che intercetta l'evento di submit, per poi richiamare la funzione aggiungiProdotto
 document.addEventListener('DOMContentLoaded', function() {
 
+    verificaToken();
     
     //Facendo così blocco l'inserimento della 'e' e dei segni + e - nell'input field di tipo number
     document.getElementById("prezzoProdottoInput").addEventListener("keydown", function(event) {
@@ -99,3 +103,6 @@ function modificaQuantita(segno) {
     quantitaInput.value = quantita;
 
 }
+
+
+window.modificaQuantita = modificaQuantita;

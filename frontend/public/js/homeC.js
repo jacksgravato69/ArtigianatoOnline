@@ -1,3 +1,5 @@
+//TODO: IN TEORIA INUTILE
+
 document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".search-toggle");
     const container = document.querySelector(".search-container");

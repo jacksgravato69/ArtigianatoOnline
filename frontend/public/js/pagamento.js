@@ -1,4 +1,8 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 document.addEventListener("DOMContentLoaded", function() { 
+
+    verificaToken();
 
     //Recupero il prezzo attuale del carrello
     const prezzoCarrello = parseFloat(localStorage.getItem("prezzoCarrello"));

@@ -50,7 +50,7 @@ router.post('/', async(req, res) => {
 
                   httpOnly: true, //Cookie accessibile solo lato server con richieste HTTP
                   secure: false, //Settato a false il cookie può essere inviato anche con connessioni HTTP (anche se non sono HTTPS)
-                  sameSite: 'Lax', //Cookie inviato solo per richieste in sito
+                  sameSite: 'lax', //Cookie inviato solo per richieste in sito
                   maxAge: 2 * 60 * 60 * 1000 //Tempo di durata del cookie in ms, messo con questo calcolo per abbreviare la cifra
 
                 })

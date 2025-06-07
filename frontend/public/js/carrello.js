@@ -1,4 +1,8 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 document.addEventListener("DOMContentLoaded", function() {
+
+    verificaToken();
 
     caricaCarrello();
 
@@ -33,7 +37,7 @@ document.addEventListener('click', function(event) {
         quantitaAggiornate[idProdotto] = (quantitaAggiornate[idProdotto] || 0) + 1;
         localStorage.setItem("quantitaProdotti", JSON.stringify(quantitaAggiornate));
 
-        for(i = 0; i < carrelloAttuale.length; i++) {
+        for(let i = 0; i < carrelloAttuale.length; i++) {
 
             if(carrelloAttuale[i]["ID"] === idProdotto) {
 

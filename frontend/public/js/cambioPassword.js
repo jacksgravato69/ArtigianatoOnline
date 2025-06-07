@@ -1,8 +1,12 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 //Mostro a schermo la domanda di sicurezza che ha selezionato l'utente durante la fase di registrazione
 const domandaSicurezza = JSON.parse(localStorage.getItem("utente")).domandaSicurezza;
 
 //Attendo il caricamento del DOM per poi inserire la domanda di sicurezza
 document.addEventListener('DOMContentLoaded', function () {
+
+    verificaToken();
 
     document.getElementById("domandaSicurezza").textContent = domandaSicurezza;
 
@@ -72,3 +76,5 @@ function cambiaPassword(tipoModifica) {
     })
 
 }
+
+window.cambiaPassword = cambiaPassword;

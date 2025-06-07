@@ -1,4 +1,8 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 document.addEventListener("DOMContentLoaded", function() {
+
+    verificaToken();
 
     //Facendo così blocco l'inserimento della 'e' e dei segni + e - nell'input field di tipo number
     document.getElementById("prezzoProdottoInput").addEventListener("keydown", function(event) {
@@ -138,3 +142,5 @@ function effettuaRicerca() {
     })
     
 }
+
+window.effettuaRicerca = effettuaRicerca;

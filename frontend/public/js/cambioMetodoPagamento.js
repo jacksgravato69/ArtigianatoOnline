@@ -1,5 +1,10 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 //Metto un listener per il form che intercetta l'evento di submit, per poi richiamare la funzione cambiaMetodoPagamento
 document.addEventListener('DOMContentLoaded', function() {
+
+    verificaToken();
+
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
 
         //Prevenire il comportamento predefinito del forrm

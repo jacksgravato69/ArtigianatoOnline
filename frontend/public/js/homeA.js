@@ -1,5 +1,16 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 //EventListener che carica i prodotti dal DB quando viene caricato il DOM
 document.addEventListener("DOMContentLoaded", function() {
+
+    verificaToken();
+
+    const toggle = document.querySelector(".search-toggle");
+    const container = document.querySelector(".search-container");
+      
+    toggle.addEventListener("click", () => {
+        container.classList.toggle("active");
+    });
 
     if(!localStorage.getItem("filtri")) {
 

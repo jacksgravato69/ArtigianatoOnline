@@ -1,3 +1,5 @@
+import { verificaToken } from './verificaTokenFront.js';
+
 console.log(localStorage.getItem("utente"));
 
 let username = JSON.parse(localStorage.getItem("utente")).username;
@@ -8,6 +10,8 @@ let spanUsername, inputUsername, spanMail, inputMail;
 
 //Attendo il caricamento del DOM per poi inserire i dati dell'utente che sono stati salvati nel localStorage durante il login o registrazione
 document.addEventListener('DOMContentLoaded', function () {
+
+    verificaToken();
     
     document.getElementById("usernameSpan").textContent = username;
     document.getElementById("mailSpan").textContent = email;
@@ -188,3 +192,6 @@ function modifica(tipoModifica) {
     }
 
 }
+
+window.modificaCampo = modificaCampo;
+window.modifica = modifica;
