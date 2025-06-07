@@ -224,6 +224,10 @@ function mostraProdotti(data) {
         quantitàRimanente.className = 'quantitàRimanente';
         quantitàRimanente.setAttribute('data-id', prodotto["ID"]);
         card.appendChild(quantitàRimanente);
+
+        const prezzo = document.createElement('p');
+        prezzo.textContent = prodotto["Prezzo"] + '€';
+        card.appendChild(prezzo);
     
         //Creo l'oggetto button che rappresenta il pulsante per aggiungere l'elemento al carrello e lo aggiungo al div che rappresenta la card
         const bottoneAggiungi = document.createElement('button');

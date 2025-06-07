@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Modifica Prodotto</title>
+
+        <link href="../public/css/styleAggP.css" rel="stylesheet">
+
+        <script src="/public/js/modificaProdottoA.js"></script>
+
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <h2>Modifica Prodotto</h2>
+            </nav>
+        </header>
+
+        <main>
+            <form id="modificaProdottoForm" class="formModifica" enctype="multipart/form-data">
+
+                <p>
+                    <strong>Nome prodotto:</strong>
+                    <span id="nomeProdotto"></span>
+                    <input name = "nomeProdotto" type="text" id="nomeProdottoInput" required>
+                </p>
+
+                <p class="descrizione">
+                    <strong>Descrizione:</strong>
+                    <textarea name="descrizioneProdotto" id="descrizioneProdottoInput" rows="4" cols="50" required></textarea>
+                </p>
+
+                <p>
+                    <strong>Quantità:</strong>
+                    <button class="butt-Quantita" onclick="modificaQuantita('-')" type="button">-</button>
+                    <input name="quantità" id="quantitaInput" type="number" min="1" value="1" class="inputQ" readonly>
+                    <button class="butt-Quantita" onclick="modificaQuantita('+')" type="button">+</button>
+                </p>
+                <p>
+                    <strong>Prezzo:</strong>
+                    <input name="prezzo" type="number" id="prezzoProdottoInput" step="0.01" required>
+                </p>
+
+                <button class="aggP" type="submit">Modifica prodotto</button><br><br>
+                <button class="indietro">Indietro</button><br><br>
+            </form>
+        </main>
+
+
+    </body>

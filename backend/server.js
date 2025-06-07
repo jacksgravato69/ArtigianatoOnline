@@ -12,7 +12,10 @@ const modificaAPI = require('./routes/api/modifica.js');
 const creaProdottoAPI = require('./routes/api/creaProdotto.js');
 const elencoProdottiAPI = require('./routes/api/elencoProdotti.js');
 const elencoArtigianiAPI = require('./routes/api/elencoArtigiani.js');
-const confermaOrdineAPI = require('./routes/api/confermaOrdine.js')
+const confermaOrdineAPI = require('./routes/api/confermaOrdine.js');
+const elencoOrdiniAPI = require('./routes/api/elencoOrdini.js');
+const ordineSpeditoAPI = require('./routes/api/ordineSpedito.js');
+const modificaProdottoAPI = require('./routes/api/modificaProdotto.js');
 
 //Dico di leggere tutti i file statici dalla cartella public; tutti i file che si trovano in questa cartella sono accessibili come se si trovssero nella root
 //app.use(express.static(__dirname + "/public"));
@@ -68,6 +71,15 @@ app.use('/api/elencoArtigiani', elencoArtigianiAPI);
 
 //Indica che tutte le richieste che iniziano con /api/confermaOrdine verranno gestite da quello che c’è nel file confermaOrdine.js
 app.use('/api/confermaOrdine', confermaOrdineAPI);
+
+//Indica che tutte le richieste che iniziano con /api/elencoOrdini verranno gestite da quello che c’è nel file elencoOrdini.js
+app.use('/api/elencoOrdini', elencoOrdiniAPI);
+
+//Indica che tutte le richieste che iniziano con /api/ordineSpedito verranno gestite da quello che c’è nel file ordineSpedito.js
+app.use('/api/ordineSpedito', ordineSpeditoAPI);
+
+//Indica che tutte le richieste che iniziano con /api/modificaProdotto verranno gestite da quello che c’è nel file modificaProdott.js
+app.use('/api/modificaProdotto', modificaProdottoAPI);
 
 //Per immagini
 app.use(express.static('public', {

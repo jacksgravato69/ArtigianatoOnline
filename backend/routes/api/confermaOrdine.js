@@ -18,6 +18,15 @@ router.post('/', verificaToken, verificaRuolo('cliente'), async (req, res) => {
             await pool.query('INSERT INTO \"OrdiniProdotti\" (\"IDOrdine\", \"IDProdotto\", \"Quantità\", \"PrezzoTotale\", \"EmailArtigiano\", \"NomeCliente\", \"CognomeCliente\", \"Indirizzo\", \"Provincia\") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', [idOrdine, prodotto["ID"], prodotto["quantita"], prodotto["prezzoTotale"], prodotto["email"], nome, cognome, indirizzo, provincia]);
             await pool.query('UPDATE \"ElencoProdotti\" SET \"Quantità\" = \"Quantità\" - $1 WHERE \"ID\" = $2', [Number(prodotto["quantita"]), Number(prodotto["ID"])]);
 
+            const queryProdottiRimanenti = await pool.query('SELECT \"Quantità\" FROM \"ElencoProdotti\" WHERE \"ID\" = $1', [Number(prodotto["ID"])]);
+
+            if (queryProdottiRimanenti.rows.length > 0 && Number(queryProdottiRimanenti.rows[0]["Quantità"]) <= 0) {
+
+                //Cancello se la quantità del prodotto è 0
+                await pool.query('DELETE FROM \"ElencoProdotti\" WHERE \"ID\" = $1', [Number(prodotto["ID"])]);
+
+            }
+
         }
 
         res.status(200).json({

@@ -109,7 +109,19 @@ router.post('/', verificaToken, async(req, res) => {
                     });
 
                 }
+
+                break;
+
+            case 'prodottiArtigiano':
+
+                const prodottiArtigiano = await pool.query('SELECT * FROM \"ElencoProdotti\" WHERE \"Email\" = $1', [req.utente.email]);
                 
+                res.status(200).json({
+        
+                    success: true,
+                    prodotti: prodottiArtigiano.rows
+        
+                })
 
         }
 
