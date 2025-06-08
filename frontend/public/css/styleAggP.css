@@ -21,12 +21,12 @@ h2{
 
 main {
     max-width: 800px;
-    margin: 2rem auto;           /* centro orizzontale */
+    margin: 2rem auto;          
     padding: 2rem;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     background-color: #fff;
     border-radius: 8px;
-    text-align: left;            /* <-- fondamentale per allineare il testo a sinistra */
+    text-align: left;            
 }
 
 #immagineProdottoInput{
@@ -116,4 +116,38 @@ button {
 .aggP:active {
     transform: translateY(2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/*CSS Responsive*/
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+    
+    button, .bottone {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 14px;
+    }
+    
+    
+    header nav {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #immagineProdottoInput, #tipologiaProdotto {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 14px;
+    }
+    .butt-Quantita, .aggP {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 14px;
+    }
+    
 }
