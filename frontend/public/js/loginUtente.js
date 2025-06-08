@@ -54,6 +54,11 @@ function loginUtente(event) {
                     //Reindirizzo alla pagina di home del cliente
                     window.location.replace('../../views/homeC.html');
     
+                } else if(data.utente.ruolo === 'admin') {
+
+                    //Reindirizzo alla pagina dell'admin
+                    window.location.replace('../../views/admin.html');
+
                 } else {
 
                     alert("Tipo utente non riconosciuto.")

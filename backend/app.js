@@ -17,6 +17,8 @@ const elencoOrdiniAPI = require('./routes/api/elencoOrdini.js');
 const ordineSpeditoAPI = require('./routes/api/ordineSpedito.js');
 const modificaProdottoAPI = require('./routes/api/modificaProdotto.js');
 const verificaTokenAPI = require('./routes/api/verificaTokenPagine.js');
+const inviaSegnalazioneAPI = require('./routes/api/inviaSegnalazione.js');
+const infoAdminAPI = require('./routes/api/infoAdmin.js');
 
 //Dico di leggere tutti i file statici dalla cartella public; tutti i file che si trovano in questa cartella sono accessibili come se si trovssero nella root
 //app.use(express.static(__dirname + "/public"));
@@ -84,6 +86,12 @@ app.use('/api/modificaProdotto', modificaProdottoAPI);
 
 //Indica che tutte le richieste che iniziano con /api/verificaToken verranno gestite da quello che c’è nel file verificaToken.js
 app.use('/api/verificaToken', verificaTokenAPI);
+
+//Indica che tutte le richieste che iniziano con /api/inviaSegnalazione verranno gestite da quello che c’è nel file inviaSegnalazione.js
+app.use('/api/inviaSegnalazione', inviaSegnalazioneAPI);
+
+//Indica che tutte le richieste che iniziano con /api/infoAdmin verranno gestite da quello che c’è nel file infoAdmin.js
+app.use('/api/infoAdmin', infoAdminAPI);
 
 //Per immagini
 app.use(express.static('public', {

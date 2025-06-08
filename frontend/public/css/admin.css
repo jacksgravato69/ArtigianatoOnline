@@ -30,6 +30,9 @@ main {
   display: flex;
   position: relative;
 
+   flex-direction: column;
+  gap: 2rem; 
+
 }
 
 .cards-container {

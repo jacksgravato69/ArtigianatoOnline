@@ -29,6 +29,10 @@
 --------------------------------------------------------------------------------------------------------------------------------
 
 # UTENTI DI PROVA
+**ADMIN**
+Email: admin123$$
+Password: admin123$$
+
 **Cliente**
 Email: Paolo@gmail.com
 Password: Paolo
@@ -47,3 +51,6 @@ Risposta di Sicurezza: Varese
 # ACCEDERE ALLA CONSOLE DEL DB
 
 docker exec -it artigianatoonline-db-1 psql -U jackchiara -d artigianatoonline
+
+
+docker compose run backend npm test

@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
          <link href="../public/css/admin.css" rel="stylesheet">
-         <script src="../public/js/admin.js"></script>
+         <script type="module"src="../public/js/admin.js"></script>
         
     </head>
 
@@ -18,75 +18,119 @@
             </nav>
         </header>
         <main>
-            <div class="conteiner">
-                
-            <section class="card">
-                <h2>Gestione Utenti</h2>
-                <p>dettagli</p>
-                <button onclick="apriSidebar('gestioneUtenti')">Visualizza </button>
-            </section>
+            <div class="conteiner"></div>
 
-
-            <section class="card">
-                <h2>Gestione Prodotti</h2>
-                <p>dettagli</p>
-                <button onclick="apriSidebar('gestioneProdotti')">Controlla Stato</button>
-            </section>
-            </div>
-
-            <aside class="gestioneUtenti" id="gestioneUtenti">
-                <button id="chiudiSidebar" onclick="chiudiSidebar()">×</button>
                 <div id="contenutoUtente">
-            <table id="utenteTable">
-                <thead>
-                    <tr>
-                        <th>Tipo Utente</th>
-                        <th>Mail</th>
-                    </tr>
-                </thead>
-                <tbody id="utenteBody">
-                    <tr>
-                        <td>Artigiano</td>
-                        <td>pippo@gmail.com</td>  
-                    </tr>
-                    <tr>
-                        <td>Cliente</td>
-                        <td>topolino@gmail.com</td>  
-                    </tr>
-                </tbody>
-            </table>
+
+                    <h3>Elenco Utenti ( <span id="numeroUtenti"> 0 </span> )</h3>
+                    
+                        <table id="elencoUtentiTable">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Username</th>
+                                    <th>Tipo Utente</th>
+                                </tr>
+                            </thead>
+                            <tbody id="elencoUtentiBody">
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Mario</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Paolo</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Lucilla</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                </div> 
+
+                <br>
+                
+                <div>
+
+                    <h3>Elenco Ordini ( <span id="numeroOrdini"> 0 </span> ) </h3>
+                    
+                        <table id="elencoOrdiniTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Email del Cliente</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+                            <tbody id="elencoOrdiniBody">
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Mario</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Paolo</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Lucilla</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                </div>
+
+                <div>
+
+                    <h3>Elenco Segnalazioni ( <span id="numeroSegnalazioni"> 0 </span> ) </h3>
+                    
+                        <table id="elencoSegnalazioniTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Email</th>
+                                    <th>Testo</th>
+                                    <th>Tipo utente</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+                            <tbody id="elencoSegnalazioniBody">
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Mario</td>
+                                    <td>Rossi</td>
+                                    <td>Mario</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Paolo</td>
+                                    <td>Rossi</td>
+                                    <td>Mario</td>
+                                </tr>
+                                <tr>
+                                    <td>56</td>
+                                    <td>Rossi</td>
+                                    <td>Lucilla</td>
+                                    <td>Rossi</td>
+                                    <td>Mario</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                </div>
             </div>
-            </aside>
-            
-            <aside class="gestioneProdotti" id="gestioneProdotti">
-                <button id="chiudiSidebar" onclick="chiudiSidebar()">×</button>
-                <div id="contenutoProdotto">
-            <table id="prodottoTable">
-                <thead>
-                    <tr>
-                        <th>Tipologia</th>
-                        <th>Nome</th>
-                        <th>Quantità</th>
-                        <th>Prezzo</th>
-                    </tr>
-                </thead>
-                <tbody id="prodottoBody">
-                    <tr>
-                        <td>Gioiello</td>
-                        <td>Collana</td>
-                        <td>34</td>
-                        <td>45</td>   
-                    </tr>
-                    <tr>
-                        <td>Gioiello</td>
-                        <td>Orecchhini</td>
-                        <td>34</td>
-                        <td>45</td> 
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-            </aside>
 
             
          </main>
