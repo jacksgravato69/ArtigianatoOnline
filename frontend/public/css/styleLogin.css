@@ -48,7 +48,6 @@ button {
     color: white;
     border: none;
     padding: 0.8rem;
-    
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s, box-shadow 0.1s;
@@ -64,6 +63,29 @@ button {
 
 
 .bottone:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.indietro {
+    text-align: center;
+    background-color: white;
+    color: #4a7c59;
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.indietro:hover {
+    background-color: #3a6b49;
+}
+
+
+.indietro:active {
     transform: translateY(2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

@@ -69,6 +69,32 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+button.indietro {
+    background-color: white;
+    color: #4a7c59;
+    border: none;
+    padding: 0.8rem;
+    
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.1s;
+    margin-top: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.indietro:hover {
+    background-color: #3a6b49;
+}
+
+
+.indietro:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
 /*CSS Responsive*/
 @media (max-width: 600px) {
     body { 

@@ -234,10 +234,57 @@ button:active {
     text-decoration: underline;
 }
 
-#pulsanteIndietro {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 50;
-}
 
+
+/*CSS Responsive*/
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+    
+    button, .checkout {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 14px;
+        
+    }
+    
+    header nav {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .headC {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .prodotto {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .imP {
+    width: 100%;
+    height: auto;
+    
+  }
+
+ 
+
+
+ 
+
+  .riassunto {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  
+
+}

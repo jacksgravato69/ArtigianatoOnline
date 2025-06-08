@@ -105,3 +105,34 @@ button {
     transform: translateY(2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+    
+    button, .bottone {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 14px;
+    }
+    
+    header nav {
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input{
+      width: 100%; 
+      display: block;
+        
+    }
+
+    label {
+      width: 100%; 
+      display: block;
+    }
+}
