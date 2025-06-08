@@ -65,10 +65,10 @@ main {
   background-color: #3a6b49;
 }
 
-/* Sidebar destra */
+
 #sidebar {
   width: 35%;
-  background-color: #fff;
+  background-color: red;
   border-left: 1px solid #ccc;
   padding: 2rem;
   position: absolute;
@@ -81,6 +81,8 @@ main {
 }
 
 #chiudiSidebar {
+  display: none;
+  border-radius: 10px;
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -88,3 +90,58 @@ main {
   cursor: pointer;
   background-color: #3a6b49;
 }
+
+#chiudiSidebar:hover {
+  background-color: #3a6b49;
+}
+
+table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    background-color: white; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+
+th {
+    background-color: #4a7c59; 
+    text-align: left; 
+    padding: 12px 15px; 
+    border-bottom: 2px solid #ddd; 
+    color: #eee;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-transform: uppercase;
+}
+
+
+td {
+    padding: 10px 15px; 
+    border-bottom: 1px solid #eee; 
+    color: #333;
+    font-size: 0.9em;
+}
+
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; 
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+
+table th:nth-child(4), 
+table td:nth-child(4) {
+    text-align: right; 
+}
+
+table th:last-child, 
+table td:last-child {
+    text-align: center;
+}
+

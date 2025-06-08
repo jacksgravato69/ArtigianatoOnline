@@ -21,31 +21,81 @@
             <div class="conteiner">
                 
             <section class="card">
-                <h2>Attività Utenti</h2>
+                <h2>Gestione Utenti</h2>
                 <p>dettagli</p>
-                <button>Visualizza </button>
+                <button onclick="apriSidebar('gestioneUtenti')">Visualizza </button>
             </section>
 
-            <section class="card">
-                <h2>Segnalazioni</h2>
-                <p>dettagli</p>
-                <button> Pannello Segnalazioni</button>
-            </section>
 
             <section class="card">
-                <h2>Stato del Sistema</h2>
+                <h2>Gestione Prodotti</h2>
                 <p>dettagli</p>
-                <button>Controlla Stato</button>
+                <button onclick="apriSidebar('gestioneProdotti')">Controlla Stato</button>
             </section>
             </div>
 
-            <aside id="sidebar">
+            <aside class="gestioneUtenti" id="gestioneUtenti">
                 <button id="chiudiSidebar" onclick="chiudiSidebar()">×</button>
-                <div id="contenutoSidebar">
-                    bla bla
-                </div>
+                <div id="contenutoUtente">
+            <table id="utenteTable">
+                <thead>
+                    <tr>
+                        <th>Tipo Utente</th>
+                        <th>Mail</th>
+                    </tr>
+                </thead>
+                <tbody id="utenteBody">
+                    <tr>
+                        <td>Artigiano</td>
+                        <td>pippo@gmail.com</td>  
+                    </tr>
+                    <tr>
+                        <td>Cliente</td>
+                        <td>topolino@gmail.com</td>  
+                    </tr>
+                </tbody>
+            </table>
+            </div>
             </aside>
+            
+            <aside class="gestioneProdotti" id="gestioneProdotti">
+                <button id="chiudiSidebar" onclick="chiudiSidebar()">×</button>
+                <div id="contenutoProdotto">
+            <table id="prodottoTable">
+                <thead>
+                    <tr>
+                        <th>Tipologia</th>
+                        <th>Nome</th>
+                        <th>Quantità</th>
+                        <th>Prezzo</th>
+                    </tr>
+                </thead>
+                <tbody id="prodottoBody">
+                    <tr>
+                        <td>Gioiello</td>
+                        <td>Collana</td>
+                        <td>34</td>
+                        <td>45</td>   
+                    </tr>
+                    <tr>
+                        <td>Gioiello</td>
+                        <td>Orecchhini</td>
+                        <td>34</td>
+                        <td>45</td> 
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            </aside>
+
+            
          </main>
+         
+
+            
+         
+
+
     </body>
 
     

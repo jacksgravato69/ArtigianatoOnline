@@ -21,63 +21,62 @@ h2{
 
 main {
     max-width: 800px;
-    margin: 2rem auto;           /* centro orizzontale */
+    margin: 2rem auto;           
     padding: 2rem;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     background-color: #fff;
     border-radius: 8px;
-    text-align: left;            /* <-- fondamentale per allineare il testo a sinistra */
+    text-align: left;            
 }
 
 table {
-    width: 100%; /* La chiave per farla occupare tutta la larghezza del main */
-    border-collapse: collapse; /* Fondamentale per far sì che i bordi delle celle si uniscano */
-    margin-top: 20px; /* Spazio sopra la tabella */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Ombra per un effetto visivo migliore */
-    background-color: white; /* Sfondo bianco per la tabella */
-    border-radius: 8px; /* Bordi arrotondati per la tabella, se desiderato */
-    overflow: hidden; /* Importante se usi border-radius sulla tabella e vuoi che i bordi delle celle interne non escano */
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    background-color: white; 
+    border-radius: 8px; 
+    overflow: hidden; 
 }
 
-/* Stili per le intestazioni della tabella */
+
 th {
-    background-color: #4a7c59; /* Sfondo leggermente grigio per le intestazioni */
-    text-align: left; /* Allinea il testo a sinistra */
-    padding: 12px 15px; /* Padding interno */
-    border-bottom: 2px solid #ddd; /* Bordo inferiore per separare l'intestazione dal corpo */
+    background-color: #4a7c59; 
+    text-align: left; 
+    padding: 12px 15px; 
+    border-bottom: 2px solid #ddd; 
     color: #eee;
     font-weight: bold;
     font-size: 0.95em;
     text-transform: uppercase;
 }
 
-/* Stili per le celle del corpo della tabella */
+
 td {
-    padding: 10px 15px; /* Padding interno */
-    border-bottom: 1px solid #eee; /* Bordo inferiore leggero per separare le righe */
+    padding: 10px 15px; 
+    border-bottom: 1px solid #eee; 
     color: #333;
     font-size: 0.9em;
 }
 
-/* Stili per le righe pari (opzionale, per migliore leggibilità) */
+
 tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* Colore di sfondo alternato */
+    background-color: #f9f9f9; 
 }
 
-/* Hover sulle righe per interattività (opzionale) */
 tbody tr:hover {
     background-color: #f0f0f0;
 }
 
-/* Allineamento specifico per le colonne (se necessario) */
-table th:nth-child(4), /* Totale */
+
+table th:nth-child(4), 
 table td:nth-child(4) {
-    text-align: right; /* Allinea a destra il totale */
+    text-align: right; 
 }
 
-table th:last-child, /* Stato */
+table th:last-child, 
 table td:last-child {
-    text-align: center; /* Centra lo stato */
+    text-align: center;
 }
 
 button {
