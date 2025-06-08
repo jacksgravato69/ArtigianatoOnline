@@ -54,8 +54,6 @@ function aggiungiProdotto() {
     .then(res => res.json())
     .then(data => {
 
-        console.log("Risposta dal server:", data);
-        console.log("funziona? ", data.success)
 
         if(data.success) {
 
@@ -72,7 +70,6 @@ function aggiungiProdotto() {
 
             document.getElementById("aggiungiProdottoForm").reset();
             
-            console.log("Nome:", document.getElementById("nomeProdottoInput").value);
 
         } else {
 

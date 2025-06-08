@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if(data.success) {
 
-            console.log(data.elencoOrdini);
             mostraOrdini(data);
 
         } else {

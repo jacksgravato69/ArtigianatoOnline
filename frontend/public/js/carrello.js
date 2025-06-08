@@ -136,7 +136,6 @@ function caricaCarrello() {
 
     })
 
-    console.log(JSON.parse(localStorage.getItem("carrello")))
 
 }
 

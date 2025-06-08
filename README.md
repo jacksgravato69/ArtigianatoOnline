@@ -26,6 +26,16 @@
  3. Infine avviare lo script inserendo nel terminale sempre nella cartella del progetto il comando './reset.sh'
 
 
+ # ESEGUIRE IL TESTING
+
+ 1. Dirigersi da terminale nella cartella del progetto
+ 2. Eseguire il comando 'docker compose run backend npm test'
+
+
+
+ # Per la documentazione e lo schema ER, guardare file della Documentazione Tecnica e ER nella cartella del progetto
+
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 # UTENTI DI PROVA
@@ -34,23 +44,18 @@ Email: admin123$$
 Password: admin123$$
 
 **Cliente**
-Email: Paolo@gmail.com
-Password: Paolo
-Risposta di Sicurezza: Giallo
+Email: paolo12@gmail.com
+Password: Paolo13
+Risposta di Sicurezza: Paola
 
-**Artigiano**
-Email: napoli@gmail.com
-Password: napoli
-Risposta di Sicurezza: Napoli
+**Artigiani**
+Email: artigiano@insubria.it
+Password: ArtigianoInsubria123!
+Risposta di Sicurezza: Sirius
 
-**Cliente**
-Email: giorgi63@gmail.com
-Password: giorgione35
-Risposta di Sicurezza: Varese
-
-# ACCEDERE ALLA CONSOLE DEL DB
-
-docker exec -it artigianatoonline-db-1 psql -U jackchiara -d artigianatoonline
+Email: dogodogo@gmail.com
+Password: ClubDogo31
+Risposta di Sicurezza: Bianco
 
 
-docker compose run backend npm test
+

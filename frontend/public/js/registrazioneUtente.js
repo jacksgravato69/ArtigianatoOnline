@@ -24,12 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //Funzione che viene chiamata quando il Cliente preme il tasto per confermare la registrazione
-//TODO: aggiungere i controlli per verificare i dati inseriti dall'utente
 function registraUtente(tipoCliente) {
 
     let data = {};
 
-    console.log("Tipo cliente:", tipoCliente);
     
     if(tipoCliente == "cliente") {
       
@@ -45,8 +43,7 @@ function registraUtente(tipoCliente) {
       numeroCarta = document.getElementById("numeroCarta").value
       dataScadenza = document.getElementById("scadenza").value
 
-      console.log("Numero carta ", numeroCarta)
-      console.log("mail", email)
+
 
       //Definisco in delle variabili la domanda e la risposta di sicurezza per l'eventuale recupero della password
       //Per ottenere il testo della donmanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
@@ -86,8 +83,7 @@ function registraUtente(tipoCliente) {
       numeroCarta = document.getElementById("numeroCarta").value
       dataScadenza = document.getElementById("scadenza").value
 
-      console.log("Numero carta ", numeroCarta)
-      console.log("mail", email)
+
 
       //Definisco in delle variabili la domanda e la risposta di sicurezza per l'eventuale recupero della password
       //Per ottenere il testo della domanda di sicurezza seleziono prima l'indice della domanda selezionata, e poi prendo il testo della domanda
@@ -115,7 +111,6 @@ function registraUtente(tipoCliente) {
 
     }
 
-    console.log("Dati inviati:", data);
 
     //Inoltro la richiesta di registrazione al server per la registrazione passando i dati in formato JSON, e salvo la risposta in una variabile
     const response = fetch('http://localhost:3000/api/registrazione', {
@@ -181,13 +176,4 @@ function registraUtente(tipoCliente) {
 
 }
 
-//Funzione di prova per stampare
-function stampa() {
-
-    console.log(document.getElementById("domandaSicurezza").options[document.getElementById("domandaSicurezza").selectedIndex].text)
-
-    const selectedIndex = document.getElementById("domandaSicurezza").selectedIndex;
-    const selectedOption = document.getElementById("domandaSicurezza").options[selectedIndex];
-
-}
 

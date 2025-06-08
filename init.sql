@@ -5,7 +5,7 @@
 -- Dumped from database version 17.5 (Debian 17.5-1.pgdg120+1)
 -- Dumped by pg_dump version 17.0
 
--- Started on 2025-06-07 16:52:57 CEST
+-- Started on 2025-06-08 19:16:42 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,10 +24,13 @@ SET row_security = off;
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
 --
 
+-- CREATE SCHEMA public;
 
+
+-- ALTER SCHEMA public OWNER TO pg_database_owner;
 
 --
--- TOC entry 3406 (class 0 OID 0)
+-- TOC entry 3410 (class 0 OID 0)
 -- Dependencies: 5
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
 --
@@ -40,21 +43,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 217 (class 1259 OID 16385)
--- Name: Clienti; Type: TABLE; Schema: public; Owner: jackchiara
---
-
-CREATE TABLE public."Clienti" (
-    "Email" character varying NOT NULL,
-    "Username" character varying NOT NULL,
-    "Password" character varying NOT NULL
-);
-
-
-ALTER TABLE public."Clienti" OWNER TO jackchiara;
-
---
--- TOC entry 218 (class 1259 OID 16390)
+-- TOC entry 217 (class 1259 OID 16390)
 -- Name: DatiCarte; Type: TABLE; Schema: public; Owner: jackchiara
 --
 
@@ -71,7 +60,7 @@ CREATE TABLE public."DatiCarte" (
 ALTER TABLE public."DatiCarte" OWNER TO jackchiara;
 
 --
--- TOC entry 219 (class 1259 OID 16395)
+-- TOC entry 218 (class 1259 OID 16395)
 -- Name: ElencoProdotti; Type: TABLE; Schema: public; Owner: jackchiara
 --
 
@@ -83,14 +72,15 @@ CREATE TABLE public."ElencoProdotti" (
     "Descrizione" text NOT NULL,
     "Tipologia" character varying NOT NULL,
     "Quantità" integer NOT NULL,
-    "Prezzo" character varying NOT NULL
+    "Prezzo" character varying NOT NULL,
+    "Username" character varying
 );
 
 
 ALTER TABLE public."ElencoProdotti" OWNER TO jackchiara;
 
 --
--- TOC entry 220 (class 1259 OID 16400)
+-- TOC entry 219 (class 1259 OID 16400)
 -- Name: ElencoProdotti_ID_seq; Type: SEQUENCE; Schema: public; Owner: jackchiara
 --
 
@@ -106,8 +96,8 @@ CREATE SEQUENCE public."ElencoProdotti_ID_seq"
 ALTER SEQUENCE public."ElencoProdotti_ID_seq" OWNER TO jackchiara;
 
 --
--- TOC entry 3408 (class 0 OID 0)
--- Dependencies: 220
+-- TOC entry 3412 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: ElencoProdotti_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jackchiara
 --
 
@@ -115,7 +105,7 @@ ALTER SEQUENCE public."ElencoProdotti_ID_seq" OWNED BY public."ElencoProdotti"."
 
 
 --
--- TOC entry 221 (class 1259 OID 16401)
+-- TOC entry 220 (class 1259 OID 16401)
 -- Name: ElencoUtenti; Type: TABLE; Schema: public; Owner: jackchiara
 --
 
@@ -132,7 +122,7 @@ CREATE TABLE public."ElencoUtenti" (
 ALTER TABLE public."ElencoUtenti" OWNER TO jackchiara;
 
 --
--- TOC entry 223 (class 1259 OID 16420)
+-- TOC entry 221 (class 1259 OID 16406)
 -- Name: Ordini; Type: TABLE; Schema: public; Owner: jackchiara
 --
 
@@ -146,7 +136,7 @@ CREATE TABLE public."Ordini" (
 ALTER TABLE public."Ordini" OWNER TO jackchiara;
 
 --
--- TOC entry 225 (class 1259 OID 16438)
+-- TOC entry 222 (class 1259 OID 16411)
 -- Name: OrdiniProdotti; Type: TABLE; Schema: public; Owner: jackchiara
 --
 
@@ -167,7 +157,7 @@ CREATE TABLE public."OrdiniProdotti" (
 ALTER TABLE public."OrdiniProdotti" OWNER TO jackchiara;
 
 --
--- TOC entry 224 (class 1259 OID 16437)
+-- TOC entry 223 (class 1259 OID 16416)
 -- Name: OrdiniProdotti_ID_seq; Type: SEQUENCE; Schema: public; Owner: jackchiara
 --
 
@@ -183,8 +173,8 @@ CREATE SEQUENCE public."OrdiniProdotti_ID_seq"
 ALTER SEQUENCE public."OrdiniProdotti_ID_seq" OWNER TO jackchiara;
 
 --
--- TOC entry 3409 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 3413 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: OrdiniProdotti_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jackchiara
 --
 
@@ -192,7 +182,7 @@ ALTER SEQUENCE public."OrdiniProdotti_ID_seq" OWNED BY public."OrdiniProdotti"."
 
 
 --
--- TOC entry 222 (class 1259 OID 16419)
+-- TOC entry 224 (class 1259 OID 16417)
 -- Name: Ordini_ID_seq; Type: SEQUENCE; Schema: public; Owner: jackchiara
 --
 
@@ -208,8 +198,8 @@ CREATE SEQUENCE public."Ordini_ID_seq"
 ALTER SEQUENCE public."Ordini_ID_seq" OWNER TO jackchiara;
 
 --
--- TOC entry 3410 (class 0 OID 0)
--- Dependencies: 222
+-- TOC entry 3414 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: Ordini_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jackchiara
 --
 
@@ -217,7 +207,48 @@ ALTER SEQUENCE public."Ordini_ID_seq" OWNED BY public."Ordini"."ID";
 
 
 --
--- TOC entry 3232 (class 2604 OID 16406)
+-- TOC entry 226 (class 1259 OID 16438)
+-- Name: Segnalazioni; Type: TABLE; Schema: public; Owner: jackchiara
+--
+
+CREATE TABLE public."Segnalazioni" (
+    "ID" integer NOT NULL,
+    "EmailSegnalatore" character varying NOT NULL,
+    "TestoSegnalazione" character varying NOT NULL,
+    "DataSegnalazione" timestamp without time zone DEFAULT now() NOT NULL,
+    "TipoUtente" character varying NOT NULL
+);
+
+
+ALTER TABLE public."Segnalazioni" OWNER TO jackchiara;
+
+--
+-- TOC entry 225 (class 1259 OID 16437)
+-- Name: Segnalazioni_ID_seq; Type: SEQUENCE; Schema: public; Owner: jackchiara
+--
+
+CREATE SEQUENCE public."Segnalazioni_ID_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public."Segnalazioni_ID_seq" OWNER TO jackchiara;
+
+--
+-- TOC entry 3415 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: Segnalazioni_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jackchiara
+--
+
+ALTER SEQUENCE public."Segnalazioni_ID_seq" OWNED BY public."Segnalazioni"."ID";
+
+
+--
+-- TOC entry 3233 (class 2604 OID 16418)
 -- Name: ElencoProdotti ID; Type: DEFAULT; Schema: public; Owner: jackchiara
 --
 
@@ -225,7 +256,7 @@ ALTER TABLE ONLY public."ElencoProdotti" ALTER COLUMN "ID" SET DEFAULT nextval('
 
 
 --
--- TOC entry 3233 (class 2604 OID 16423)
+-- TOC entry 3234 (class 2604 OID 16419)
 -- Name: Ordini ID; Type: DEFAULT; Schema: public; Owner: jackchiara
 --
 
@@ -233,7 +264,7 @@ ALTER TABLE ONLY public."Ordini" ALTER COLUMN "ID" SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 3234 (class 2604 OID 16441)
+-- TOC entry 3235 (class 2604 OID 16420)
 -- Name: OrdiniProdotti ID; Type: DEFAULT; Schema: public; Owner: jackchiara
 --
 
@@ -241,133 +272,126 @@ ALTER TABLE ONLY public."OrdiniProdotti" ALTER COLUMN "ID" SET DEFAULT nextval('
 
 
 --
--- TOC entry 3392 (class 0 OID 16385)
+-- TOC entry 3236 (class 2604 OID 16441)
+-- Name: Segnalazioni ID; Type: DEFAULT; Schema: public; Owner: jackchiara
+--
+
+ALTER TABLE ONLY public."Segnalazioni" ALTER COLUMN "ID" SET DEFAULT nextval('public."Segnalazioni_ID_seq"'::regclass);
+
+
+--
+-- TOC entry 3395 (class 0 OID 16390)
 -- Dependencies: 217
--- Data for Name: Clienti; Type: TABLE DATA; Schema: public; Owner: jackchiara
---
-
-COPY public."Clienti" ("Email", "Username", "Password") FROM stdin;
-Pippo@gmail.com	Pippo	$2b$10$iWFrRG4Pxe/DYq4N7egVru68bf1gY7WpF3A9uLBy73EKFXuuwX4Jq
-Paolo@gmail.com	Paolo	$2b$10$VdVIgLk1EO7yv3FILS/mcuW87l.tF9xfPwHYjQ/1aB.ODLyvG./8O
-\.
-
-
---
--- TOC entry 3393 (class 0 OID 16390)
--- Dependencies: 218
 -- Data for Name: DatiCarte; Type: TABLE DATA; Schema: public; Owner: jackchiara
 --
 
 COPY public."DatiCarte" ("Email", "Nome", "Cognome", "Indirizzo", "NumeroCarta", "DataScadenza") FROM stdin;
-Piero@gmail.com	Piero	Leclerc	Via Dal Sacco	$2b$10$HxA6AGvD./D/3vVoEI4w2.uIOphSOU/S7N1MsVFf6pkus/e3mj21i	2030-10-10
-cristiano@gmail.com	Cristiano	Mirioni	Piazza Insubria 69	$2b$10$GQlz/k3DrOBih1MlYAaxr.ks/kmlw/dXKyZPgVmDYuTNKUavZZ1uy	2026-07-02
-Giovanni@gmail.com	Giovanni	Baudo	Via piero	$2b$10$RwWFpVCsGpyCVRRJTqd/leROFwrgnD3gOlSvn90/7eR2oFqKDhd5W	2025-04-04
-napoli@gmail.com	Giovanni	Di Lorenzo	Via Giambattista Marino	$2b$10$uPCelDdKuzFBTbB9qOiD3eaJZz3BvMvTcvCrsxcsZ/pv1980rM.ii	2025-06-06
-Paolo@gmail.com	Paolo	Rosberg	Via dalle Balls	$2b$10$nPHXtAPJ1EevibCSbSB7PuVK9KgWlSyYA61E904Y21IFP8/9O4Smy	2025-06-19
+artigiano@insubria.it	Domenico	Landolfo	Via Meda, 3	$2b$10$j7vTcDKkH90N4wyMnCwR1OKNyVVXHqzQCydOGxwFBcCU5PBn1g5ai	2025-06-13
+dogodogo@gmail.com	Silvia	Grieco	Via Jackal, 32	$2b$10$6F8e2uo983hhDQI17/VBBeZhTeIBwdMn3Wqudj8LxTnPS0oVrjije	2026-12-31
+paolo12@gmail.com	Paolo	Mirioni	Via Re Magi, 70	$2b$10$nV5YHQTmFZpcq/mfXRkb6esGXfu6zS/ShnGy0QhpNJ.lVJ/MfBAmS	2026-06-18
 \.
 
 
 --
--- TOC entry 3394 (class 0 OID 16395)
--- Dependencies: 219
+-- TOC entry 3396 (class 0 OID 16395)
+-- Dependencies: 218
 -- Data for Name: ElencoProdotti; Type: TABLE DATA; Schema: public; Owner: jackchiara
 --
 
-COPY public."ElencoProdotti" ("ID", "Email", "NomeProdotto", "Immagine", "Descrizione", "Tipologia", "Quantità", "Prezzo") FROM stdin;
-11	napoli@gmail.com	Mo funziona sto prodotto	1749120265012-ordini.png	fidate	Oggetti in metallo	3	43
-8	napoli@gmail.com	Prodotto 6	1749119958052-carrello1.png	altro carrello	Tessili	4	34
-9	napoli@gmail.com	Prodotto 7	1749120057754-aggiungiP.png	Bo	Arte e decorazioni	2	43
-10	napoli@gmail.com	Prodotto 8	1749120199784-utente.png	krewfn 	Prodotti naturali	1	342
-12	napoli@gmail.com	Basta	1749120295075-ordini.png	23d2d	Gioielli artigianali	2	32
-5	napoli@gmail.com	Prodotto 4	1749119619126-pack.png	Er Pack	Legno lavorato	19	24
-13	napoli@gmail.com	Prodotto nero	1749162208457-schermonero.png	schermo nero	Altro	2	69
-3	napoli@gmail.com	Prodotto 2	1749118933175-O.png	cewcde	Altro	2	32
-7	napoli@gmail.com	Prodotto 5	1749119855026-utente.png	Utente	Oggetti in metallo	2	76
-15	napoli@gmail.com	Porro	1749196521303-pack.png	un bel porro	Legno lavorato	2	65
-4	napoli@gmail.com	Prodotto 3	1749119453324-icon.png	pippo	Carta e cartoleria	2	63
-6	napoli@gmail.com	Prodotto bo	1749119813573-carrello.png	Carrello pazzo matto	Tessili	2	100
+COPY public."ElencoProdotti" ("ID", "Email", "NomeProdotto", "Immagine", "Descrizione", "Tipologia", "Quantità", "Prezzo", "Username") FROM stdin;
+26	artigiano@insubria.it	Porta gomitoli	1749401669882-prodotto2.jpeg	Porta gomitoli artigianale	Legno lavorato	2	35	\N
+25	artigiano@insubria.it	Acquario	1749401611850-prodotto1.jpg	Acquario in vetro soffiato	Arte e decorazioni	3	65	\N
+27	dogodogo@gmail.com	Porta gioie	1749401871959-prodotto3.jpg	Porta gioie in cartone rigido	Gioielli artigianali	10	14	\N
 \.
 
 
 --
--- TOC entry 3396 (class 0 OID 16401)
--- Dependencies: 221
+-- TOC entry 3398 (class 0 OID 16401)
+-- Dependencies: 220
 -- Data for Name: ElencoUtenti; Type: TABLE DATA; Schema: public; Owner: jackchiara
 --
 
 COPY public."ElencoUtenti" ("Email", "Username", "Password", "TipoUtente", "DomandaSicurezza", "RispostaSicurezza") FROM stdin;
-Pippo@gmail.com	Pippo	$2b$10$45PU57MVM.A/LEjvxhr8B.O/FuDydbOkNVBEN5nDxNqMf.bq9wxLW	cliente	\N	\N
-Piero@gmail.com	Piero	$2b$10$eUNSWEJHR66WjzHjaOguq.edjOp3FKCvz9KbY3mcejnNPwOxEnU.i	cliente	\N	\N
-cristiano@gmail.com	Cristiano	$2b$10$6UlmqxKkKxYyzcpFy3meluTm9v.382yatC/QVpCxxS4pA9ypyraBi	cliente	Qual è il nome di tua madre?	$2b$10$dqRWwAv4BZ/7dq0x5Y/m.etH0M9PwPTwOWHhJMytqc8h.uxUHah5m
-Giovanni@gmail.com	Giovanni	$2b$10$vXkr7FozZmU3MM7kpcNCuuFs27HJtKnpvPnlSbn6/3oV3oacQI5/2	cliente	ah si?	$2b$10$o4B8X6JZGnGZ2CdrtEtG0OwcDaooZt99yzv8Y8MB64vtWEU1dNI5u
-		$2b$10$s4mjwZqiUv0wuOCFTJqSYem7TROMGXmWPnK2TvFGlDvfwxJEMs15O	cliente	Qual è il nome di tua madre?	$2b$10$tYyk3qMcKpyizT.Fta3shuJz2b0zyuw8OUBcTG3fLHaUgr2PVukrK
-napoli@gmail.com	Insubria&Co.	$2b$10$IvQyP47hrljEhazNB8q1seVFkG5AuBmj9amfEGNdKl0i647nc.f4m	artigiano	In che città sei nato?	$2b$10$xK6eeqZ.KHj1R2Hf7RJ4u.nFWUJQTWl2ox.MWlcyuepOJVjldzzG6
-Paolo@gmail.com	Paolo	$2b$10$nB/tUAJR5/ET.0KEwjSFj.OT2q7YWLV9rvTU2UxgDp9JNuy14mwoK	cliente	Qual è il tuo colore preferito?	$2b$10$kyyrv4UGtfw9H1XN9/59Q.0L546m4HfbbAY0NL8khgnCvnkOooEam
+admin123$$		$2a$10$LS1.Sb.20LhQ8vJ/CIwkUeL9Z2Qk6FciI9iPTbf4hUBzEsd1v940u	admin		
+artigiano@insubria.it	ArtigianoInsubria	$2b$10$7RQUuQKCpjZ3y.9AmWUOo.kKDObC/DJ9gOMTHBw3BEpNB7phRWC3O	artigiano	Come si chiamava il tuo primo animale domestico?	$2b$10$PwmZFKA14WFRrIGUBj4ia.b6HREG1lWEd.ylpRqDo9nK93fPYcw3C
+dogodogo@gmail.com	Dogo&Co.	$2b$10$nK3TH.GTMZI5q93hpFy2v.f1TXIPOT/Ld/VTEbu8qtk9eGNXlfGmi	artigiano	In che città sei nato?	$2b$10$jJQW92/JnCc7ddOKubr7yOXSUUiwS2TsUJ8G6khDO9e83x5ZQbuj.
+paolo12@gmail.com	gigi12	$2b$10$g8I7IwSev2skWY4Wxw8TvuHf5MivK.m52c64g6COfMyy6VNxf8V.6	cliente	Qual è il nome di tua madre?	$2b$10$hWDC7.LyfY01f7Tti6Doi.isBd3s92gmNGh3g91vjGP7OPOAJrivO
 \.
 
 
 --
--- TOC entry 3398 (class 0 OID 16420)
--- Dependencies: 223
+-- TOC entry 3399 (class 0 OID 16406)
+-- Dependencies: 221
 -- Data for Name: Ordini; Type: TABLE DATA; Schema: public; Owner: jackchiara
 --
 
 COPY public."Ordini" ("ID", "EmailCliente", "Data") FROM stdin;
-12	Paolo@gmail.com	2025-06-07 11:01:44.146147
+16	paolo12@gmail.com	2025-06-08 17:00:43.012581
 \.
 
 
 --
--- TOC entry 3400 (class 0 OID 16438)
--- Dependencies: 225
+-- TOC entry 3400 (class 0 OID 16411)
+-- Dependencies: 222
 -- Data for Name: OrdiniProdotti; Type: TABLE DATA; Schema: public; Owner: jackchiara
 --
 
 COPY public."OrdiniProdotti" ("ID", "IDOrdine", "IDProdotto", "Quantità", "PrezzoTotale", "EmailArtigiano", "NomeCliente", "CognomeCliente", "Indirizzo", "Provincia") FROM stdin;
-18	12	3	1	32	napoli@gmail.com	dwdwefw	nyrtbdwdfwqf	dwqdqw	qdq3dq
-19	12	7	1	76	napoli@gmail.com	dwdwefw	nyrtbdwdfwqf	dwqdqw	qdq3dq
-20	12	15	1	65	napoli@gmail.com	dwdwefw	nyrtbdwdfwqf	dwqdqw	qdq3dq
+24	16	25	1	65	artigiano@insubria.it	Paolo	Mirioni	Via Re Magi, 5	Varese
+25	16	26	1	35	artigiano@insubria.it	Paolo	Mirioni	Via Re Magi, 5	Varese
+26	16	27	3	42	dogodogo@gmail.com	Paolo	Mirioni	Via Re Magi, 5	Varese
 \.
 
 
 --
--- TOC entry 3411 (class 0 OID 0)
--- Dependencies: 220
+-- TOC entry 3404 (class 0 OID 16438)
+-- Dependencies: 226
+-- Data for Name: Segnalazioni; Type: TABLE DATA; Schema: public; Owner: jackchiara
+--
+
+COPY public."Segnalazioni" ("ID", "EmailSegnalatore", "TestoSegnalazione", "DataSegnalazione", "TipoUtente") FROM stdin;
+2	dogodogo@gmail.com	Questa è una segnalazione	2025-06-08 17:12:18.197304	artigiano
+\.
+
+
+--
+-- TOC entry 3416 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: ElencoProdotti_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: jackchiara
 --
 
-SELECT pg_catalog.setval('public."ElencoProdotti_ID_seq"', 15, true);
+SELECT pg_catalog.setval('public."ElencoProdotti_ID_seq"', 27, true);
 
 
 --
--- TOC entry 3412 (class 0 OID 0)
--- Dependencies: 224
+-- TOC entry 3417 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: OrdiniProdotti_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: jackchiara
 --
 
-SELECT pg_catalog.setval('public."OrdiniProdotti_ID_seq"', 20, true);
+SELECT pg_catalog.setval('public."OrdiniProdotti_ID_seq"', 29, true);
 
 
 --
--- TOC entry 3413 (class 0 OID 0)
--- Dependencies: 222
+-- TOC entry 3418 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: Ordini_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: jackchiara
 --
 
-SELECT pg_catalog.setval('public."Ordini_ID_seq"', 12, true);
+SELECT pg_catalog.setval('public."Ordini_ID_seq"', 18, true);
 
 
 --
--- TOC entry 3236 (class 2606 OID 16408)
--- Name: Clienti Clienti_pkey; Type: CONSTRAINT; Schema: public; Owner: jackchiara
+-- TOC entry 3419 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: Segnalazioni_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: jackchiara
 --
 
-ALTER TABLE ONLY public."Clienti"
-    ADD CONSTRAINT "Clienti_pkey" PRIMARY KEY ("Email");
+SELECT pg_catalog.setval('public."Segnalazioni_ID_seq"', 2, true);
 
 
 --
--- TOC entry 3238 (class 2606 OID 16410)
+-- TOC entry 3239 (class 2606 OID 16424)
 -- Name: DatiCarte DatiCarte_pkey; Type: CONSTRAINT; Schema: public; Owner: jackchiara
 --
 
@@ -376,7 +400,7 @@ ALTER TABLE ONLY public."DatiCarte"
 
 
 --
--- TOC entry 3240 (class 2606 OID 16412)
+-- TOC entry 3241 (class 2606 OID 16426)
 -- Name: ElencoProdotti ElencoProdotti_pkey; Type: CONSTRAINT; Schema: public; Owner: jackchiara
 --
 
@@ -385,7 +409,7 @@ ALTER TABLE ONLY public."ElencoProdotti"
 
 
 --
--- TOC entry 3242 (class 2606 OID 16414)
+-- TOC entry 3243 (class 2606 OID 16428)
 -- Name: ElencoUtenti ElencoUtenti_pkey; Type: CONSTRAINT; Schema: public; Owner: jackchiara
 --
 
@@ -394,7 +418,7 @@ ALTER TABLE ONLY public."ElencoUtenti"
 
 
 --
--- TOC entry 3246 (class 2606 OID 16445)
+-- TOC entry 3247 (class 2606 OID 16430)
 -- Name: OrdiniProdotti OrdiniProdotti_pkey; Type: CONSTRAINT; Schema: public; Owner: jackchiara
 --
 
@@ -403,7 +427,7 @@ ALTER TABLE ONLY public."OrdiniProdotti"
 
 
 --
--- TOC entry 3244 (class 2606 OID 16427)
+-- TOC entry 3245 (class 2606 OID 16432)
 -- Name: Ordini Ordini_pkey; Type: CONSTRAINT; Schema: public; Owner: jackchiara
 --
 
@@ -412,7 +436,16 @@ ALTER TABLE ONLY public."Ordini"
 
 
 --
--- TOC entry 3407 (class 0 OID 0)
+-- TOC entry 3249 (class 2606 OID 16446)
+-- Name: Segnalazioni Segnalazioni_pkey; Type: CONSTRAINT; Schema: public; Owner: jackchiara
+--
+
+ALTER TABLE ONLY public."Segnalazioni"
+    ADD CONSTRAINT "Segnalazioni_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 3411 (class 0 OID 0)
 -- Dependencies: 5
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: pg_database_owner
 --
@@ -420,7 +453,7 @@ ALTER TABLE ONLY public."Ordini"
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-06-07 16:52:57 CEST
+-- Completed on 2025-06-08 19:16:42 CEST
 
 --
 -- PostgreSQL database dump complete

@@ -1,9 +1,6 @@
 import { verificaToken } from './verificaTokenFront.js';
 import { indietro } from './indietro.js';
 
-
-console.log(localStorage.getItem("utente"));
-
 let username = JSON.parse(localStorage.getItem("utente")).username;
 let email = JSON.parse(localStorage.getItem("utente")).email;
 let tipoUtente = JSON.parse(localStorage.getItem("utente")).ruolo;
@@ -167,18 +164,15 @@ function modifica(tipoModifica) {
                 //Converto il dato utente da formato JSON a stringa dato che il localStorage accetta solo stringhe
                 localStorage.setItem("utente", JSON.stringify(data.utente));
 
-                console.log("appost");
                 
                 //Rimuovo l'input e mostro lo span
                 spanMail.hidden = false;
                 inputMail.hidden = true;
                 
-                console.log("appost1");
 
                 //Aggiorno lo span con la nuova mail
                 spanMail.textContent = JSON.parse(localStorage.getItem("utente")).email;
 
-                console.log("appost2");
 
                 //"Nascondo" il pulsante per confermare la mail e mostro quello per modificare le informazioni
                 document.getElementById("modificaMail").hidden = false;

@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(res => res.json())
         .then(data => {
     
-            console.log(data.prodotti[0]["Email"]);
     
             if(data.success) {
     
@@ -65,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //Aggiungo un listener ad ogni tipo di input nel campo di ricerca
         document.getElementById("campoRicerca").addEventListener("input", function(event) {
             
-            localStorage.setItem("filtri", null);
+            localStorage.setItem("filtri");
 
             //Salvo in una variabile quello che scrive l'utente
             const ricerca = event.target.value;
@@ -76,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
             //Setto un Timeout che effettua la ricerca solo se non viene premuto nessun pulsante dopo 500ms
             debounceTimer = setTimeout(() => {
                 
-                console.log("RICERCA: " + ricerca);
                 
                 let data = {
                     
@@ -171,7 +169,6 @@ document.addEventListener('click', function(event) {
             
         })
         
-        console.log("carrello" + carrello);
         
         prezzoCarrello += parseFloat(prezzoProdotto);
 
@@ -221,6 +218,10 @@ function mostraProdotti(data) {
         const titoloProdotto = document.createElement('h3');
         titoloProdotto.textContent = prodotto["NomeProdotto"];
         card.appendChild(titoloProdotto);
+
+        const usernameArtigiano = document.createElement('p');
+        usernameArtigiano.textContent = prodotto["Username"];
+        card.appendChild(usernameArtigiano);
     
         //Creo l'oggetto p che rappresenta la descrizione del prodotto e lo aggiungo al div che rappresenta la card
         const descrizioneProdotto = document.createElement('p');

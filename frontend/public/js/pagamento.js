@@ -62,7 +62,6 @@ document.addEventListener('click', function(event) {
 
         }
 
-        console.log("Carrello ", carrelloAggregato);
 
         fetch('http://localhost:3000/api/confermaOrdine', {
     
@@ -79,6 +78,10 @@ document.addEventListener('click', function(event) {
 
             if(data.success) {
 
+                // Svuota carrello e prezzo
+                localStorage.setItem("carrello", JSON.stringify([]));
+                localStorage.setItem("prezzoCarrello", "0");
+
                 //Reindirizzo alla pagina di home del cliente
                 window.location.replace('../../views/homeC.html');
 
@@ -90,7 +93,6 @@ document.addEventListener('click', function(event) {
 
         })
 
-        //console.log(carrello[1]["ID"]);
 
     }
 

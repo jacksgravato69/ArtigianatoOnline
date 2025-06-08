@@ -10,7 +10,6 @@ export async function verificaToken() {
     
             if(data.success) {
     
-                console.log('Token valido, utente:', data.utente);
     
             } else {
     

@@ -30,7 +30,6 @@ document.addEventListener('submit', function(event) {
         const quantita = document.getElementById("quantitaInput").value;
         const prezzoProdotto = document.getElementById("prezzoProdottoInput").value;
 
-        console.log("descrizione ", descrizioneProdotto);
 
         let data = {
 

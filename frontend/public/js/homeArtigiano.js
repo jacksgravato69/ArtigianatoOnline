@@ -25,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(res => res.json())
         .then(data => {
     
-            console.log(data.prodotti[0]["Email"]);
-    
             if(data.success) {
     
                 mostraProdottiArtigiano(data);

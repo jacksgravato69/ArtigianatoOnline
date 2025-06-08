@@ -37,23 +37,6 @@ app.use(cors({
 //Per richieste JSON
 app.use(express.json());
 
-
-//QUERY DI PROVA
-pool.query('SELECT * FROM \"DatiCarte\"', (err, result) => {
-
-    if (err) {
-
-        console.error('Error executing query', err);
-
-    } else {
-
-        console.log('Query resultone:', result.rows);        
-    
-    }
-
-});
-
-
 //Indica che tutte le richieste che iniziano con /api/registrazione verranno gestite da quello che c’è nel file registrazione.js
 app.use('/api/registrazione', registrazioneAPI);
 
