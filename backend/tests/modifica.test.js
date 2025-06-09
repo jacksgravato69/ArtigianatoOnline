@@ -179,7 +179,7 @@ describe('POST /api/modifica', () => {
       nome: 'Modificato',
       cognome: 'Pagatore',
       indirizzo: 'Via Nuovo Indirizzo',
-      numeroCarta: '1234567890123456', //numero di carta non valido per l'algoritmo di Luhn
+      numeroCarta: '1234567890123456', //Numero di carta non valido per l'algoritmo di Luhn
       scadenza: '2035-01-01'
 
     });

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.12% </span>
+                <span class="strong">97.56% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/41</span>
+                <span class='fraction'>40/41</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
-                <span class="quiet">Branches</span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">95% </span>
+                <span class="strong">97.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>38/40</span>
+                <span class='fraction'>39/40</span>
             </div>
         
             
@@ -156,16 +156,7 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">12x</span>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -173,6 +164,8 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
@@ -203,21 +196,10 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
@@ -286,6 +268,8 @@ const elencoOrdiniAPI = require('./routes/api/elencoOrdini.js');
 const ordineSpeditoAPI = require('./routes/api/ordineSpedito.js');
 const modificaProdottoAPI = require('./routes/api/modificaProdotto.js');
 const verificaTokenAPI = require('./routes/api/verificaTokenPagine.js');
+const inviaSegnalazioneAPI = require('./routes/api/inviaSegnalazione.js');
+const infoAdminAPI = require('./routes/api/infoAdmin.js');
 &nbsp;
 //Dico di leggere tutti i file statici dalla cartella public; tutti i file che si trovano in questa cartella sono accessibili come se si trovssero nella root
 //app.use(express.static(__dirname + "/public"));
@@ -303,23 +287,6 @@ app.use(cors({
 &nbsp;
 //Per richieste JSON
 app.use(express.json());
-&nbsp;
-&nbsp;
-//QUERY DI PROVA
-pool.query('SELECT * FROM \"DatiCarte\"', (err, result) =&gt; {
-&nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        console.error('Error executing query', err);</span>
-&nbsp;
-    } else {
-&nbsp;
-        console.log('Query resultone:', result.rows);        
-    
-    }
-&nbsp;
-});
-&nbsp;
 &nbsp;
 //Indica che tutte le richieste che iniziano con /api/registrazione verranno gestite da quello che c’è nel file registrazione.js
 app.use('/api/registrazione', registrazioneAPI);
@@ -354,6 +321,12 @@ app.use('/api/modificaProdotto', modificaProdottoAPI);
 //Indica che tutte le richieste che iniziano con /api/verificaToken verranno gestite da quello che c’è nel file verificaToken.js
 app.use('/api/verificaToken', verificaTokenAPI);
 &nbsp;
+//Indica che tutte le richieste che iniziano con /api/inviaSegnalazione verranno gestite da quello che c’è nel file inviaSegnalazione.js
+app.use('/api/inviaSegnalazione', inviaSegnalazioneAPI);
+&nbsp;
+//Indica che tutte le richieste che iniziano con /api/infoAdmin verranno gestite da quello che c’è nel file infoAdmin.js
+app.use('/api/infoAdmin', infoAdminAPI);
+&nbsp;
 //Per immagini
 app.use(express.static('public', {
   etag: false,
@@ -376,7 +349,7 @@ module.exports = app;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-08T10:54:10.986Z
+                at 2025-06-09T08:48:49.859Z
             </div>
         <script src="../prettify.js"></script>
         <script>

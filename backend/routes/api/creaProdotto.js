@@ -33,7 +33,7 @@ router.post('/', verificaToken, verificaRuolo('artigiano'), upload.single('immag
     const {nomeProdotto, immagineProdotto, descrizioneProdotto, tipologiaProdotto, quantita, prezzoProdotto} = req.body;
     const immaginePath = req.file.filename;
 
-    await pool.query('INSERT INTO \"ElencoProdotti\" (\"Email\", \"NomeProdotto\", \"Immagine\", \"Descrizione\", \"Tipologia\", \"Quantità\", \"Prezzo\") VALUES ($1, $2, $3, $4, $5, $6, $7)',[req.utente.email, nomeProdotto, immaginePath, descrizioneProdotto, tipologiaProdotto, quantita, prezzoProdotto]);
+    await pool.query('INSERT INTO \"ElencoProdotti\" (\"Email\", \"NomeProdotto\", \"Immagine\", \"Descrizione\", \"Tipologia\", \"Quantità\", \"Prezzo\", \"Username\") VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',[req.utente.email, nomeProdotto, immaginePath, descrizioneProdotto, tipologiaProdotto, quantita, prezzoProdotto, req.utente.username]);
 
     res.status(200).json({
 

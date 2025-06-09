@@ -73,6 +73,27 @@ document.addEventListener('submit', function(event) {
 
 })
 
+//Funzione che modifica la cifra che indica la quantità di prodotti che si vogliono aggiungere
+function modificaQuantita(segno) {
+    
+    let quantitaInput = document.getElementById("quantitaInput");
+    let quantita = parseInt(quantitaInput.value);
+
+    if(segno === "+") {
+
+        quantita = quantita + 1;
+
+    } else if(segno === "-") {
+
+        //Evito valori negativi
+        quantita = Math.max(0, quantita - 1);
+
+    }
+
+    quantitaInput.value = quantita;
+
+}
+
 function vaiIndietro() {
 
     indietro();
@@ -80,3 +101,4 @@ function vaiIndietro() {
 }
 
 window.vaiIndietro = vaiIndietro;
+window.modificaQuantita = modificaQuantita;

@@ -222,6 +222,7 @@ function mostraProdotti(data) {
         const usernameArtigiano = document.createElement('p');
         usernameArtigiano.textContent = prodotto["Username"];
         card.appendChild(usernameArtigiano);
+        console.log(usernameArtigiano)
     
         //Creo l'oggetto p che rappresenta la descrizione del prodotto e lo aggiungo al div che rappresenta la card
         const descrizioneProdotto = document.createElement('p');

@@ -57,5 +57,15 @@ Email: dogodogo@gmail.com
 Password: ClubDogo31
 Risposta di Sicurezza: Bianco
 
+**Numeri di Luhn di prova**
+4111 1111 1111 1111
+4012 8888 8888 1881
+
+2222 4000 7000 0005
+5105 1051 0510 5100
+
+3714 496353 98431
+3714 496353 98431
+
 
 
